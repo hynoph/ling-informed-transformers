@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv/
+venv/
+
+# Data — raw downloads and large processed files
+lit/data/raw/
+lit/data/processed/
+lit/data/splits/
+lit/logs/
+
+# Keep directory stubs
+!lit/data/raw/.gitkeep
+!lit/data/processed/.gitkeep
+!lit/data/splits/.gitkeep
+!lit/logs/.gitkeep
