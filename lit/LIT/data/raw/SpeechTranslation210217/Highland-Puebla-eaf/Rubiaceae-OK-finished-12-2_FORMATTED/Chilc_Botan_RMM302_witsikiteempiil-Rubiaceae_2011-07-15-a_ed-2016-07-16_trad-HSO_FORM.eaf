@@ -1,0 +1,1030 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ANNOTATION_DOCUMENT AUTHOR="USUARIO" DATE="2020-05-23T13:00:43-05:00" FORMAT="3.0" VERSION="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv3.0.xsd">
+    <HEADER MEDIA_FILE="" TIME_UNITS="milliseconds">
+        <MEDIA_DESCRIPTOR MEDIA_URL="file:///D:/Rubiaceae/Chilc_Botan_RMM302_witsikiteempiil-Rubiaceae_2011-07-15-a.wav" MIME_TYPE="audio/x-wav"/>
+        <PROPERTY NAME="URN">urn:nl-mpi-tools-elan-eaf:1eb15998-a8f3-444e-80a6-1c1b7f10615e</PROPERTY>
+        <PROPERTY NAME="lastUsedAnnotationId">177</PROPERTY>
+    </HEADER>
+    <TIME_ORDER>
+        <TIME_SLOT TIME_SLOT_ID="ts1" TIME_VALUE="0"/>
+        <TIME_SLOT TIME_SLOT_ID="ts2" TIME_VALUE="6939"/>
+        <TIME_SLOT TIME_SLOT_ID="ts3" TIME_VALUE="6939"/>
+        <TIME_SLOT TIME_SLOT_ID="ts4" TIME_VALUE="11657"/>
+        <TIME_SLOT TIME_SLOT_ID="ts5" TIME_VALUE="11657"/>
+        <TIME_SLOT TIME_SLOT_ID="ts6" TIME_VALUE="16291"/>
+        <TIME_SLOT TIME_SLOT_ID="ts7" TIME_VALUE="16291"/>
+        <TIME_SLOT TIME_SLOT_ID="ts8" TIME_VALUE="19448"/>
+        <TIME_SLOT TIME_SLOT_ID="ts9" TIME_VALUE="19448"/>
+        <TIME_SLOT TIME_SLOT_ID="ts10" TIME_VALUE="22795"/>
+        <TIME_SLOT TIME_SLOT_ID="ts11" TIME_VALUE="22795"/>
+        <TIME_SLOT TIME_SLOT_ID="ts12" TIME_VALUE="27200"/>
+        <TIME_SLOT TIME_SLOT_ID="ts13" TIME_VALUE="27200"/>
+        <TIME_SLOT TIME_SLOT_ID="ts14" TIME_VALUE="30314"/>
+        <TIME_SLOT TIME_SLOT_ID="ts15" TIME_VALUE="30314"/>
+        <TIME_SLOT TIME_SLOT_ID="ts16" TIME_VALUE="32281"/>
+        <TIME_SLOT TIME_SLOT_ID="ts17" TIME_VALUE="32281"/>
+        <TIME_SLOT TIME_SLOT_ID="ts18" TIME_VALUE="36729"/>
+        <TIME_SLOT TIME_SLOT_ID="ts19" TIME_VALUE="36729"/>
+        <TIME_SLOT TIME_SLOT_ID="ts20" TIME_VALUE="40791"/>
+        <TIME_SLOT TIME_SLOT_ID="ts21" TIME_VALUE="40791"/>
+        <TIME_SLOT TIME_SLOT_ID="ts22" TIME_VALUE="46609"/>
+        <TIME_SLOT TIME_SLOT_ID="ts23" TIME_VALUE="46609"/>
+        <TIME_SLOT TIME_SLOT_ID="ts24" TIME_VALUE="50671"/>
+        <TIME_SLOT TIME_SLOT_ID="ts25" TIME_VALUE="50671"/>
+        <TIME_SLOT TIME_SLOT_ID="ts26" TIME_VALUE="53295"/>
+        <TIME_SLOT TIME_SLOT_ID="ts27" TIME_VALUE="53295"/>
+        <TIME_SLOT TIME_SLOT_ID="ts28" TIME_VALUE="56811"/>
+        <TIME_SLOT TIME_SLOT_ID="ts29" TIME_VALUE="56811"/>
+        <TIME_SLOT TIME_SLOT_ID="ts30" TIME_VALUE="60090"/>
+        <TIME_SLOT TIME_SLOT_ID="ts31" TIME_VALUE="60090"/>
+        <TIME_SLOT TIME_SLOT_ID="ts32" TIME_VALUE="62354"/>
+        <TIME_SLOT TIME_SLOT_ID="ts33" TIME_VALUE="62354"/>
+        <TIME_SLOT TIME_SLOT_ID="ts34" TIME_VALUE="64681"/>
+        <TIME_SLOT TIME_SLOT_ID="ts35" TIME_VALUE="64681"/>
+        <TIME_SLOT TIME_SLOT_ID="ts36" TIME_VALUE="70098"/>
+        <TIME_SLOT TIME_SLOT_ID="ts37" TIME_VALUE="70098"/>
+        <TIME_SLOT TIME_SLOT_ID="ts38" TIME_VALUE="75137"/>
+        <TIME_SLOT TIME_SLOT_ID="ts39" TIME_VALUE="75137"/>
+        <TIME_SLOT TIME_SLOT_ID="ts40" TIME_VALUE="80300"/>
+        <TIME_SLOT TIME_SLOT_ID="ts41" TIME_VALUE="80300"/>
+        <TIME_SLOT TIME_SLOT_ID="ts42" TIME_VALUE="84282"/>
+        <TIME_SLOT TIME_SLOT_ID="ts43" TIME_VALUE="84282"/>
+        <TIME_SLOT TIME_SLOT_ID="ts44" TIME_VALUE="88010"/>
+        <TIME_SLOT TIME_SLOT_ID="ts45" TIME_VALUE="88010"/>
+        <TIME_SLOT TIME_SLOT_ID="ts46" TIME_VALUE="92394"/>
+        <TIME_SLOT TIME_SLOT_ID="ts47" TIME_VALUE="92394"/>
+        <TIME_SLOT TIME_SLOT_ID="ts48" TIME_VALUE="97857"/>
+        <TIME_SLOT TIME_SLOT_ID="ts49" TIME_VALUE="97857"/>
+        <TIME_SLOT TIME_SLOT_ID="ts50" TIME_VALUE="101225"/>
+        <TIME_SLOT TIME_SLOT_ID="ts51" TIME_VALUE="101225"/>
+        <TIME_SLOT TIME_SLOT_ID="ts52" TIME_VALUE="105922"/>
+        <TIME_SLOT TIME_SLOT_ID="ts53" TIME_VALUE="105922"/>
+        <TIME_SLOT TIME_SLOT_ID="ts54" TIME_VALUE="107767"/>
+        <TIME_SLOT TIME_SLOT_ID="ts55" TIME_VALUE="107767"/>
+        <TIME_SLOT TIME_SLOT_ID="ts56" TIME_VALUE="113860"/>
+        <TIME_SLOT TIME_SLOT_ID="ts57" TIME_VALUE="113860"/>
+        <TIME_SLOT TIME_SLOT_ID="ts58" TIME_VALUE="116530"/>
+        <TIME_SLOT TIME_SLOT_ID="ts59" TIME_VALUE="116530"/>
+        <TIME_SLOT TIME_SLOT_ID="ts60" TIME_VALUE="120909"/>
+        <TIME_SLOT TIME_SLOT_ID="ts61" TIME_VALUE="120909"/>
+        <TIME_SLOT TIME_SLOT_ID="ts62" TIME_VALUE="125945"/>
+        <TIME_SLOT TIME_SLOT_ID="ts63" TIME_VALUE="125945"/>
+        <TIME_SLOT TIME_SLOT_ID="ts64" TIME_VALUE="129609"/>
+        <TIME_SLOT TIME_SLOT_ID="ts65" TIME_VALUE="129609"/>
+        <TIME_SLOT TIME_SLOT_ID="ts66" TIME_VALUE="131450"/>
+        <TIME_SLOT TIME_SLOT_ID="ts67" TIME_VALUE="131450"/>
+        <TIME_SLOT TIME_SLOT_ID="ts68" TIME_VALUE="136384"/>
+        <TIME_SLOT TIME_SLOT_ID="ts69" TIME_VALUE="136384"/>
+        <TIME_SLOT TIME_SLOT_ID="ts70" TIME_VALUE="139794"/>
+        <TIME_SLOT TIME_SLOT_ID="ts71" TIME_VALUE="139794"/>
+        <TIME_SLOT TIME_SLOT_ID="ts72" TIME_VALUE="141466"/>
+        <TIME_SLOT TIME_SLOT_ID="ts73" TIME_VALUE="141466"/>
+        <TIME_SLOT TIME_SLOT_ID="ts74" TIME_VALUE="143882"/>
+        <TIME_SLOT TIME_SLOT_ID="ts75" TIME_VALUE="143882"/>
+        <TIME_SLOT TIME_SLOT_ID="ts76" TIME_VALUE="147161"/>
+        <TIME_SLOT TIME_SLOT_ID="ts77" TIME_VALUE="147161"/>
+        <TIME_SLOT TIME_SLOT_ID="ts78" TIME_VALUE="151985"/>
+        <TIME_SLOT TIME_SLOT_ID="ts79" TIME_VALUE="151985"/>
+        <TIME_SLOT TIME_SLOT_ID="ts80" TIME_VALUE="154799"/>
+        <TIME_SLOT TIME_SLOT_ID="ts81" TIME_VALUE="154799"/>
+        <TIME_SLOT TIME_SLOT_ID="ts82" TIME_VALUE="160621"/>
+        <TIME_SLOT TIME_SLOT_ID="ts83" TIME_VALUE="160621"/>
+        <TIME_SLOT TIME_SLOT_ID="ts84" TIME_VALUE="162229"/>
+        <TIME_SLOT TIME_SLOT_ID="ts85" TIME_VALUE="162229"/>
+        <TIME_SLOT TIME_SLOT_ID="ts86" TIME_VALUE="167391"/>
+        <TIME_SLOT TIME_SLOT_ID="ts87" TIME_VALUE="167391"/>
+        <TIME_SLOT TIME_SLOT_ID="ts88" TIME_VALUE="170607"/>
+        <TIME_SLOT TIME_SLOT_ID="ts89" TIME_VALUE="170607"/>
+        <TIME_SLOT TIME_SLOT_ID="ts90" TIME_VALUE="175135"/>
+        <TIME_SLOT TIME_SLOT_ID="ts91" TIME_VALUE="175135"/>
+        <TIME_SLOT TIME_SLOT_ID="ts92" TIME_VALUE="175135"/>
+        <TIME_SLOT TIME_SLOT_ID="ts93" TIME_VALUE="176514"/>
+        <TIME_SLOT TIME_SLOT_ID="ts94" TIME_VALUE="176514"/>
+        <TIME_SLOT TIME_SLOT_ID="ts95" TIME_VALUE="176514"/>
+        <TIME_SLOT TIME_SLOT_ID="ts96" TIME_VALUE="182544"/>
+        <TIME_SLOT TIME_SLOT_ID="ts97" TIME_VALUE="182544"/>
+        <TIME_SLOT TIME_SLOT_ID="ts98" TIME_VALUE="187283"/>
+        <TIME_SLOT TIME_SLOT_ID="ts99" TIME_VALUE="187283"/>
+        <TIME_SLOT TIME_SLOT_ID="ts100" TIME_VALUE="191282"/>
+        <TIME_SLOT TIME_SLOT_ID="ts101" TIME_VALUE="191282"/>
+        <TIME_SLOT TIME_SLOT_ID="ts102" TIME_VALUE="191282"/>
+        <TIME_SLOT TIME_SLOT_ID="ts103" TIME_VALUE="194121"/>
+        <TIME_SLOT TIME_SLOT_ID="ts104" TIME_VALUE="194121"/>
+        <TIME_SLOT TIME_SLOT_ID="ts105" TIME_VALUE="194121"/>
+        <TIME_SLOT TIME_SLOT_ID="ts106" TIME_VALUE="197887"/>
+        <TIME_SLOT TIME_SLOT_ID="ts107" TIME_VALUE="197887"/>
+        <TIME_SLOT TIME_SLOT_ID="ts108" TIME_VALUE="201907"/>
+        <TIME_SLOT TIME_SLOT_ID="ts109" TIME_VALUE="201907"/>
+        <TIME_SLOT TIME_SLOT_ID="ts110" TIME_VALUE="204810"/>
+        <TIME_SLOT TIME_SLOT_ID="ts111" TIME_VALUE="204810"/>
+        <TIME_SLOT TIME_SLOT_ID="ts112" TIME_VALUE="209003"/>
+        <TIME_SLOT TIME_SLOT_ID="ts113" TIME_VALUE="209003"/>
+        <TIME_SLOT TIME_SLOT_ID="ts114" TIME_VALUE="214187"/>
+        <TIME_SLOT TIME_SLOT_ID="ts115" TIME_VALUE="214187"/>
+        <TIME_SLOT TIME_SLOT_ID="ts116" TIME_VALUE="220707"/>
+        <TIME_SLOT TIME_SLOT_ID="ts117" TIME_VALUE="220707"/>
+        <TIME_SLOT TIME_SLOT_ID="ts118" TIME_VALUE="223098"/>
+        <TIME_SLOT TIME_SLOT_ID="ts119" TIME_VALUE="223098"/>
+        <TIME_SLOT TIME_SLOT_ID="ts120" TIME_VALUE="224621"/>
+        <TIME_SLOT TIME_SLOT_ID="ts121" TIME_VALUE="224621"/>
+        <TIME_SLOT TIME_SLOT_ID="ts122" TIME_VALUE="228197"/>
+        <TIME_SLOT TIME_SLOT_ID="ts123" TIME_VALUE="228197"/>
+        <TIME_SLOT TIME_SLOT_ID="ts124" TIME_VALUE="235585"/>
+        <TIME_SLOT TIME_SLOT_ID="ts125" TIME_VALUE="235585"/>
+        <TIME_SLOT TIME_SLOT_ID="ts126" TIME_VALUE="238953"/>
+        <TIME_SLOT TIME_SLOT_ID="ts127" TIME_VALUE="238953"/>
+        <TIME_SLOT TIME_SLOT_ID="ts128" TIME_VALUE="243502"/>
+        <TIME_SLOT TIME_SLOT_ID="ts129" TIME_VALUE="243502"/>
+        <TIME_SLOT TIME_SLOT_ID="ts130" TIME_VALUE="246108"/>
+        <TIME_SLOT TIME_SLOT_ID="ts131" TIME_VALUE="246108"/>
+        <TIME_SLOT TIME_SLOT_ID="ts132" TIME_VALUE="249134"/>
+        <TIME_SLOT TIME_SLOT_ID="ts133" TIME_VALUE="249134"/>
+        <TIME_SLOT TIME_SLOT_ID="ts134" TIME_VALUE="254300"/>
+        <TIME_SLOT TIME_SLOT_ID="ts135" TIME_VALUE="254300"/>
+        <TIME_SLOT TIME_SLOT_ID="ts136" TIME_VALUE="257474"/>
+        <TIME_SLOT TIME_SLOT_ID="ts137" TIME_VALUE="257474"/>
+        <TIME_SLOT TIME_SLOT_ID="ts138" TIME_VALUE="260863"/>
+        <TIME_SLOT TIME_SLOT_ID="ts139" TIME_VALUE="260863"/>
+        <TIME_SLOT TIME_SLOT_ID="ts140" TIME_VALUE="263402"/>
+        <TIME_SLOT TIME_SLOT_ID="ts141" TIME_VALUE="263402"/>
+        <TIME_SLOT TIME_SLOT_ID="ts142" TIME_VALUE="268336"/>
+        <TIME_SLOT TIME_SLOT_ID="ts143" TIME_VALUE="268336"/>
+        <TIME_SLOT TIME_SLOT_ID="ts144" TIME_VALUE="269647"/>
+        <TIME_SLOT TIME_SLOT_ID="ts145" TIME_VALUE="269647"/>
+        <TIME_SLOT TIME_SLOT_ID="ts146" TIME_VALUE="275915"/>
+        <TIME_SLOT TIME_SLOT_ID="ts147" TIME_VALUE="275915"/>
+        <TIME_SLOT TIME_SLOT_ID="ts148" TIME_VALUE="279474"/>
+        <TIME_SLOT TIME_SLOT_ID="ts149" TIME_VALUE="279474"/>
+        <TIME_SLOT TIME_SLOT_ID="ts150" TIME_VALUE="287412"/>
+        <TIME_SLOT TIME_SLOT_ID="ts151" TIME_VALUE="287412"/>
+        <TIME_SLOT TIME_SLOT_ID="ts152" TIME_VALUE="293270"/>
+        <TIME_SLOT TIME_SLOT_ID="ts153" TIME_VALUE="293270"/>
+        <TIME_SLOT TIME_SLOT_ID="ts154" TIME_VALUE="298939"/>
+        <TIME_SLOT TIME_SLOT_ID="ts155" TIME_VALUE="298939"/>
+        <TIME_SLOT TIME_SLOT_ID="ts156" TIME_VALUE="303044"/>
+        <TIME_SLOT TIME_SLOT_ID="ts157" TIME_VALUE="303044"/>
+        <TIME_SLOT TIME_SLOT_ID="ts158" TIME_VALUE="307042"/>
+        <TIME_SLOT TIME_SLOT_ID="ts159" TIME_VALUE="307042"/>
+        <TIME_SLOT TIME_SLOT_ID="ts160" TIME_VALUE="311485"/>
+    </TIME_ORDER>
+    <TIER DEFAULT_LOCALE="us" LINGUISTIC_TYPE_REF="Transcripción" PARTICIPANT="Eleuterio Gorostiza Salazar" TIER_ID="Eleuterio Gorostiza Salazar">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a18" TIME_SLOT_REF1="ts1" TIME_SLOT_REF2="ts2">
+                <ANNOTATION_VALUE>Rubén, a:man xte:chnohno:tsa i:n xiwit mono:tsa wi:tsikite:mpi:l, ¿ox tiki:xmattok?</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a19" TIME_SLOT_REF1="ts3" TIME_SLOT_REF2="ts4">
+                <ANNOTATION_VALUE>¿Ke:niwki n' ixiwyo, ixo:chio, ka:ni mochi:wa, ox se: kito:ka oso mochi:wa sah i:pa?</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a20" TIME_SLOT_REF1="ts5" TIME_SLOT_REF2="ts6">
+                <ANNOTATION_VALUE>¿Wa:n toni ne:n kwaltia n' ikowyo, ixiwyo, ixo:chio, iteyo?</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a44" TIME_SLOT_REF1="ts53" TIME_SLOT_REF2="ts54">
+                <ANNOTATION_VALUE>¿Ke:niwki n' ixiwyo?</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a53" TIME_SLOT_REF1="ts71" TIME_SLOT_REF2="ts72">
+                <ANNOTATION_VALUE>¿Ixo:chio ke:ní:wki?</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a59" TIME_SLOT_REF1="ts83" TIME_SLOT_REF2="ts84">
+                <ANNOTATION_VALUE>¿Wa:n ita:kka?</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a60" TIME_SLOT_REF1="ts85" TIME_SLOT_REF2="ts86">
+                <ANNOTATION_VALUE>Ita:kka no: n' iteyotsi:n no: mochi:wa ke:meh yo:n tikita yo:n, *este**, ne:n nex..., *es...**,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a61" TIME_SLOT_REF1="ts87" TIME_SLOT_REF2="ts88">
+                <ANNOTATION_VALUE>ke:n kiliah, xa:lkapolin iteyo. Ihkó:n mochi:wa.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a62" TIME_SLOT_REF1="ts89" TIME_SLOT_REF2="ts90">
+                <ANNOTATION_VALUE>Mm. No: ihkó:n iteyotsi:n mochi:wa.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a63" TIME_SLOT_REF1="ts91" TIME_SLOT_REF2="ts93">
+                <ANNOTATION_VALUE>¿We:lik n' iteyo?</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a68" TIME_SLOT_REF1="ts101" TIME_SLOT_REF2="ts103">
+                <ANNOTATION_VALUE>Ikowyo kwali se: kikwi kowtati:l?</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a76" TIME_SLOT_REF1="ts117" TIME_SLOT_REF2="ts118">
+                <ANNOTATION_VALUE>¿Kwali se: kito:ka?</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a86" TIME_SLOT_REF1="ts137" TIME_SLOT_REF2="ts138">
+                <ANNOTATION_VALUE>Tikihtowa pahti, ¿ise:lti sah *o** se: kima:nelowa ya n' okseki xiwit?</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a94" TIME_SLOT_REF1="ts153" TIME_SLOT_REF2="ts154">
+                <ANNOTATION_VALUE>*Bueno**, nochi eski a de i:n wi:tsikite:mpi:l, xte:chili moto:ka:y wa:n ka:ni n' tiwa:le:wa.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER DEFAULT_LOCALE="us" LINGUISTIC_TYPE_REF="Transcripción" PARTICIPANT="Rubén Macario Martínez" TIER_ID="Rubén Macario Martínez">
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a21" TIME_SLOT_REF1="ts7" TIME_SLOT_REF2="ts8">
+                <ANNOTATION_VALUE>Yo:n wi:tsikite:mpi:l nika:wí:n tehwa:n</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a22" TIME_SLOT_REF1="ts9" TIME_SLOT_REF2="ts10">
+                <ANNOTATION_VALUE>ka:mp..., ka:mpa tiknekiskeh onkak no: yo:n kowtsí:n.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a23" TIME_SLOT_REF1="ts11" TIME_SLOT_REF2="ts12">
+                <ANNOTATION_VALUE>Yo:n kowtsí:n moskaltia a:mo semi we:i wehkapan.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a24" TIME_SLOT_REF1="ts13" TIME_SLOT_REF2="ts14">
+                <ANNOTATION_VALUE>*Medio** ta:lpantsi:n, ta:lpantsi:n wa:n yo:n ixo:chio,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a25" TIME_SLOT_REF1="ts15" TIME_SLOT_REF2="ts16">
+                <ANNOTATION_VALUE>pos kwaltia para,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a26" TIME_SLOT_REF1="ts17" TIME_SLOT_REF2="ts18">
+                <ANNOTATION_VALUE>para okwiltsitsí:n kipipi:nah, ke:meh i:n xi:kohmeh, nektsitsí:n,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a27" TIME_SLOT_REF1="ts19" TIME_SLOT_REF2="ts20">
+                <ANNOTATION_VALUE>*o** yehwa yo:n okwiltsitsí:n ne: tikihtowa wi:tsikimeh.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a28" TIME_SLOT_REF1="ts21" TIME_SLOT_REF2="ts22">
+                <ANNOTATION_VALUE>Wa:n ixiwyo, ixiwyo no:, no: kwal..., no: kwaltia para ke:meh i:n se: moteh..., se: moteki,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a29" TIME_SLOT_REF1="ts23" TIME_SLOT_REF2="ts24">
+                <ANNOTATION_VALUE>kampa se: moteki wa:n ika mah se: kipa:pa:ka *o** se: kokot.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a30" TIME_SLOT_REF1="ts25" TIME_SLOT_REF2="ts26">
+                <ANNOTATION_VALUE>Yo:n neh nikmattok.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a31" TIME_SLOT_REF1="ts27" TIME_SLOT_REF2="ts28">
+                <ANNOTATION_VALUE>Wa:n oksé: no: nikmattok no: kwaltia para mah se: tai.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a32" TIME_SLOT_REF1="ts29" TIME_SLOT_REF2="ts30">
+                <ANNOTATION_VALUE>Tein yo:n te:kokoh se: iihtik, ke:meh yo:n se: ki...,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a33" TIME_SLOT_REF1="ts31" TIME_SLOT_REF2="ts32">
+                <ANNOTATION_VALUE>ke:meh tehwa:n tikihtowah, *este**,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a34" TIME_SLOT_REF1="ts33" TIME_SLOT_REF2="ts34">
+                <ANNOTATION_VALUE>ke:ní:w kihtowa yo:n,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a35" TIME_SLOT_REF1="ts35" TIME_SLOT_REF2="ts36">
+                <ANNOTATION_VALUE>mm, se: ihtitoto:nikkalaki.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a36" TIME_SLOT_REF1="ts37" TIME_SLOT_REF2="ts38">
+                <ANNOTATION_VALUE>Yo:n no: xtai, mah no: istat, mah se: tai para te:tamati:lih no: se: iihtik.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a37" TIME_SLOT_REF1="ts39" TIME_SLOT_REF2="ts40">
+                <ANNOTATION_VALUE>A:mo n'mati kox tiki:xmati yo:n wichí:n, ihkó:n, ihkó:n mah se: tai, *tecito** sah, ke:meh i:n mahyá:, mahyá:, mahyá: a:t.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a38" TIME_SLOT_REF1="ts41" TIME_SLOT_REF2="ts42">
+                <ANNOTATION_VALUE>A:tsí:n sah, mah se: kimolo:nti wa:n mah se: tai. Ke:mah.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a39" TIME_SLOT_REF1="ts43" TIME_SLOT_REF2="ts44">
+                <ANNOTATION_VALUE>Wa:n oksé: pos i:pa para yo:ni sah wa:n,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a40" TIME_SLOT_REF1="ts45" TIME_SLOT_REF2="ts46">
+                <ANNOTATION_VALUE>para kowtati:l no: kwaltia pero semi yo:li:k, semi yo:li:k para wa:ki yo:n kowtsí:n *porque**</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a41" TIME_SLOT_REF1="ts47" TIME_SLOT_REF2="ts48">
+                <ANNOTATION_VALUE>ke:yeh, *este**, a:t..., tela:yoh, tela:yoh. Ke:mah.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a42" TIME_SLOT_REF1="ts49" TIME_SLOT_REF2="ts50">
+                <ANNOTATION_VALUE>A:mo n'mati xa: oksé: tatsi:ntokalis tiknekis wa:n,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a43" TIME_SLOT_REF1="ts51" TIME_SLOT_REF2="ts52">
+                <ANNOTATION_VALUE>a:mo nikmati komo ox tik..., kwali, kwali motech moka:wak a *lo que** tein nimitsilwih.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a45" TIME_SLOT_REF1="ts55" TIME_SLOT_REF2="ts56">
+                <ANNOTATION_VALUE>N' ixiwyo ma:..., ma:..., ma:p..., ma:pihpitsa:wak, a:mo semi ma:we:weyak tehtepitsitsi:n sah, ka:n..., ihkó:n sah.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a46" TIME_SLOT_REF1="ts57" TIME_SLOT_REF2="ts58">
+                <ANNOTATION_VALUE>Wa:n ma:..., ma:...,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a47" TIME_SLOT_REF1="ts59" TIME_SLOT_REF2="ts60">
+                <ANNOTATION_VALUE>*medio** ma:t..., ma:..., tepitsi:n mahyá:, mahyá: tikihtowah tehwa:n ma:tohmiyoh.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a48" TIME_SLOT_REF1="ts61" TIME_SLOT_REF2="ts62">
+                <ANNOTATION_VALUE>A:mo semi ma:ahalaxtik, ma:..., ma:tohmiyoh tepitsi:n wa:n ma:..., *este**,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a49" TIME_SLOT_REF1="ts63" TIME_SLOT_REF2="ts64">
+                <ANNOTATION_VALUE>a:chka ni..., achka kipia ne:n i..., n' i..., imaxalwa:n.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a50" TIME_SLOT_REF1="ts65" TIME_SLOT_REF2="ts66">
+                <ANNOTATION_VALUE>Achka kipia n' imaxalwa:n,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a51" TIME_SLOT_REF1="ts67" TIME_SLOT_REF2="ts68">
+                <ANNOTATION_VALUE>wa:n ka:mpa n' imaxalwa:n kipia, ni:nipaka *cas...**, ni[ni]paka moxelowa sepa n' imaxalwa:n wa:n ompa ya moxiw...,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a52" TIME_SLOT_REF1="ts69" TIME_SLOT_REF2="ts70">
+                <ANNOTATION_VALUE>nochi x..., nochi moxiwyo:tia kwaltsi:n. Mmm.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a54" TIME_SLOT_REF1="ts73" TIME_SLOT_REF2="ts74">
+                <ANNOTATION_VALUE>Ixo:chio chi:chi:ltik.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a55" TIME_SLOT_REF1="ts75" TIME_SLOT_REF2="ts76">
+                <ANNOTATION_VALUE>Onkak n..., onkak telsenki:s chi:chi:ltik wa:n onkak</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a56" TIME_SLOT_REF1="ts77" TIME_SLOT_REF2="ts78">
+                <ANNOTATION_VALUE>chi:chi:ltik semi tepitsi:n, tepitsi:n, tepitsi:n sah, a:mo sanké:n, sanke:n telchi:chi:ltiksemi.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a57" TIME_SLOT_REF1="ts79" TIME_SLOT_REF2="ts80">
+                <ANNOTATION_VALUE>Onkak *casi** tein telchi:chi:ltik, onkak n' tein chi:chi:ltik,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a58" TIME_SLOT_REF1="ts81" TIME_SLOT_REF2="ts82">
+                <ANNOTATION_VALUE>wa:n onkak n' tein yo:n *medio** ah..., mahyá: tikihtowah achi *medio** a:chi:petik. Ke:mah.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a64" TIME_SLOT_REF1="ts92" TIME_SLOT_REF2="ts94">
+                <ANNOTATION_VALUE>Ke:mah.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a65" TIME_SLOT_REF1="ts95" TIME_SLOT_REF2="ts96">
+                <ANNOTATION_VALUE>A:mo, a:mo ke:man, a:mo ke:man se:..., a:mo se: kikwa n' iteyo ke:meh okseki kapoltsitsí:n. Sayoh para,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a66" TIME_SLOT_REF1="ts97" TIME_SLOT_REF2="ts98">
+                <ANNOTATION_VALUE>neh nimolia no: nió:n, no: nió:n chiktehmeh a:mo kikwah *porque** pos a:mo ke:man se: kita ihkó:n mah,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a67" TIME_SLOT_REF1="ts99" TIME_SLOT_REF2="ts100">
+                <ANNOTATION_VALUE>mah etoka:n chiktehmeh itech yo:n kowtsí:n. Mmm.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a69" TIME_SLOT_REF1="ts102" TIME_SLOT_REF2="ts104">
+                <ANNOTATION_VALUE>Ompa moa:wilowa.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a70" TIME_SLOT_REF1="ts105" TIME_SLOT_REF2="ts106">
+                <ANNOTATION_VALUE>Ke:mah, kwali se: kikwi nimitsilia, pero mah..., *sea** tikihtowah tehwa:n, semi yo:likawa:ki.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a71" TIME_SLOT_REF1="ts107" TIME_SLOT_REF2="ts108">
+                <ANNOTATION_VALUE>*Es que** tela:chichi:na, yo:n tela:paltik yo:n kowtsí:n wa:n komohkó:n tiksa:loh ke:meh i:n,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a72" TIME_SLOT_REF1="ts109" TIME_SLOT_REF2="ts110">
+                <ANNOTATION_VALUE>wa:n mah ki..., mah, mah kwi..., kiowi:lo:to,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a73" TIME_SLOT_REF1="ts111" TIME_SLOT_REF2="ts112">
+                <ANNOTATION_VALUE>ompa moselyo:tihtok sah. A:mo wel wa:ki. Ompa selistok, selistok, selistok.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a74" TIME_SLOT_REF1="ts113" TIME_SLOT_REF2="ts114">
+                <ANNOTATION_VALUE>Yo:n kipia *que** tik..., tikwa:tsas, xki:xmoya:wa tepitsi:n mah, mah i:xmoya:wto para kwaltsi:n wa:ki.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a75" TIME_SLOT_REF1="ts115" TIME_SLOT_REF2="ts116">
+                <ANNOTATION_VALUE>Pero komo teh tiksa:loh, *entonces** tiksa:lo:s pos, ompa moselyo:tihtok sah, a:mo wel wa:ki. Ke:mah.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a77" TIME_SLOT_REF1="ts119" TIME_SLOT_REF2="ts120">
+                <ANNOTATION_VALUE>N' ikowyo,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a78" TIME_SLOT_REF1="ts121" TIME_SLOT_REF2="ts122">
+                <ANNOTATION_VALUE>n' ikowyo ko:mo se: ki..., komo s..., no:, no: etok to:nal sah mah se: kito:ka.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a79" TIME_SLOT_REF1="ts123" TIME_SLOT_REF2="ts124">
+                <ANNOTATION_VALUE>A:mo nochipa mah ..., ke:meh i:n selik me:tsti mah se: kito:ka, no: kwali ika se: takorra:ltia wa:n no: selia. No: selia yo:n *porque** a:yoh.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a80" TIME_SLOT_REF1="ts125" TIME_SLOT_REF2="ts126">
+                <ANNOTATION_VALUE>Ke:mah, *mi..., mismo** n' ia:yo:tsi:n kiselyo:tia.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a81" TIME_SLOT_REF1="ts127" TIME_SLOT_REF2="ts128">
+                <ANNOTATION_VALUE>*Por eso** neh nimitsilia sayoh xikte:ma sah, xiksa:lo *o** xikte:ma ne:wí:n x..., wa:n</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a82" TIME_SLOT_REF1="ts129" TIME_SLOT_REF2="ts130">
+                <ANNOTATION_VALUE>mah tikihto:ka:n tehwa:n x'olo:chte:ma,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a83" TIME_SLOT_REF1="ts131" TIME_SLOT_REF2="ts132">
+                <ANNOTATION_VALUE>ompa moselo..., moselyo:tihtok, a:mo wel wa:ki.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a84" TIME_SLOT_REF1="ts133" TIME_SLOT_REF2="ts134">
+                <ANNOTATION_VALUE>Yo:n kipia *que** tikmoya:was, tiki:xmoya:was para mah, mah kimaga ne:n to:naltsi:n,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a85" TIME_SLOT_REF1="ts135" TIME_SLOT_REF2="ts136">
+                <ANNOTATION_VALUE>para kwaltsi:n wa:ki. Mmm.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a87" TIME_SLOT_REF1="ts139" TIME_SLOT_REF2="ts140">
+                <ANNOTATION_VALUE>A:mo, neh nikmattok *que** se:..., para se: tai:s yehwa sah.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a88" TIME_SLOT_REF1="ts141" TIME_SLOT_REF2="ts142">
+                <ANNOTATION_VALUE>A:xka:n, a:..., a:xka:n para se: kipa:kas ne:n kokot *o** se:, ka:mpa se: moh..., se: moteki.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a89" TIME_SLOT_REF1="ts143" TIME_SLOT_REF2="ts144">
+                <ANNOTATION_VALUE>no: yehwa sah yo:n xiwtsí:n.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a90" TIME_SLOT_REF1="ts145" TIME_SLOT_REF2="ts146">
+                <ANNOTATION_VALUE>Mah se: ki:xpa:ka kwaltsí:n wa:n mah se: ki..., mah se:, mah se: kita:lilia i:n, *este*,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a91" TIME_SLOT_REF1="ts147" TIME_SLOT_REF2="ts148">
+                <ANNOTATION_VALUE>teihsá: *polv...**, teihsá:, *este** pahti,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a92" TIME_SLOT_REF1="ts149" TIME_SLOT_REF2="ts150">
+                <ANNOTATION_VALUE>koyo:pah *o, o, o** ke:meh yo:n..., koyo:pah, *porque** nika:n tehwa:n pos ti..., tik..., ki..., tik..., tikwih yehwa ya n' tein xiwtsitsí:n sah ka:n....</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a93" TIME_SLOT_REF1="ts151" TIME_SLOT_REF2="ts152">
+                <ANNOTATION_VALUE>A:mo tikwih *este, pomadas**, yo:n *pomadas** pos yehwa n' koyo:pah, koyo:pahti a n' tikihtowah. Uhuh.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a95" TIME_SLOT_REF1="ts155" TIME_SLOT_REF2="ts156">
+                <ANNOTATION_VALUE>Neh nimono:tsa Rubén Macario, niwa:le:wa nika:n de Chi:lkowtah,</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a96" TIME_SLOT_REF1="ts157" TIME_SLOT_REF2="ts158">
+                <ANNOTATION_VALUE>*cerca** nika:n San Miguel, *casi** tipowih, tipowih San Miguel.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <ALIGNABLE_ANNOTATION ANNOTATION_ID="a97" TIME_SLOT_REF1="ts159" TIME_SLOT_REF2="ts160">
+                <ANNOTATION_VALUE>Ke:mah, tipowih San Miguel.</ANNOTATION_VALUE>
+            </ALIGNABLE_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="Traducción" PARENT_REF="Eleuterio Gorostiza Salazar" PARTICIPANT="Eleuterio Gorostiza Salazar" TIER_ID="EGS Traducción">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a98" ANNOTATION_REF="a18">
+                <ANNOTATION_VALUE>Don Rubén, ahora platícanos de la planta que se llama wi:tsikite:mpi:l, ¿usted conoce?</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a99" ANNOTATION_REF="a19">
+                <ANNOTATION_VALUE>¿Cómo son sus hojas, sus flores, en donde se da, si se siembra o se dá sólo?</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a100" ANNOTATION_REF="a20">
+                <ANNOTATION_VALUE>¿Para qué sirve su tallo, sus hojas, sus flores y sus semillas?</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a117" ANNOTATION_REF="a44">
+                <ANNOTATION_VALUE>¿Cómo son sus hojas?</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a133" ANNOTATION_REF="a53">
+                <ANNOTATION_VALUE>¿Cómo son sus flores?</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a134" ANNOTATION_REF="a59">
+                <ANNOTATION_VALUE>¿Y sus frutos?</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a135" ANNOTATION_REF="a60">
+                <ANNOTATION_VALUE>Sus frutos son, los frutos son como, haz visto el, este el nex..., es..., </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a136" ANNOTATION_REF="a61">
+                <ANNOTATION_VALUE>que le llaman xa:lkapolin, sus frutos. Así son. </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a137" ANNOTATION_REF="a62">
+                <ANNOTATION_VALUE>Mm.También así son sus frutos.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a138" ANNOTATION_REF="a63">
+                <ANNOTATION_VALUE>¿Se pueden comer sus frutos?</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a147" ANNOTATION_REF="a68">
+                <ANNOTATION_VALUE>¿La madera se puede usar para leña?</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a157" ANNOTATION_REF="a76">
+                <ANNOTATION_VALUE>¿Se puede sembrar en estaca?</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a158" ANNOTATION_REF="a86">
+                <ANNOTATION_VALUE>Y si se usa para curar, ¿se usa sóla o se junta con otras hierbas?</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a159" ANNOTATION_REF="a94">
+                <ANNOTATION_VALUE>Bueno, creo que es todo del wi:tsikite:mpil, dínos tu nombre y el lugar de donde vienes.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <TIER DEFAULT_LOCALE="en" LINGUISTIC_TYPE_REF="Traducción" PARENT_REF="Rubén Macario Martínez" PARTICIPANT="Rubén Macario Martínez" TIER_ID="RMM Traducción">
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a101" ANNOTATION_REF="a21">
+                <ANNOTATION_VALUE>Acá nosotros el wi:tsikite:mpi:l</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a102" ANNOTATION_REF="a22">
+                <ANNOTATION_VALUE>hay árboles en don..., donde quiera.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a103" ANNOTATION_REF="a23">
+                <ANNOTATION_VALUE>Ése arbolito no crece muy alto.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a104" ANNOTATION_REF="a24">
+                <ANNOTATION_VALUE>Crece un poco bajito, es bajito y sus flores,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a105" ANNOTATION_REF="a25">
+                <ANNOTATION_VALUE>sirven para,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a106" ANNOTATION_REF="a26">
+                <ANNOTATION_VALUE>alimento de algunos insectos voladores como los jicotes, abejas,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a107" ANNOTATION_REF="a27">
+                <ANNOTATION_VALUE>o las aves que las conocemos como colibríes wi:tsikimeh.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a108" ANNOTATION_REF="a28">
+                <ANNOTATION_VALUE>Y las hojas, las hojas también se..., se usan para curar las heridas en una cor..., cortada,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a109" ANNOTATION_REF="a29">
+                <ANNOTATION_VALUE>se usan para lavar la herida de una cortada o de un grano. </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a110" ANNOTATION_REF="a30">
+                <ANNOTATION_VALUE>Eso es lo que yo conozco.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a111" ANNOTATION_REF="a31">
+                <ANNOTATION_VALUE>Y lo otro que yo también sé, es que se puede tomar en té</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a112" ANNOTATION_REF="a32">
+                <ANNOTATION_VALUE>Cuando uno sufre un dolor de estómago, como cuando se..., </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a113" ANNOTATION_REF="a33">
+                <ANNOTATION_VALUE>como cuando nosotros decimos que,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a114" ANNOTATION_REF="a34">
+                <ANNOTATION_VALUE>¿cómo se dice?</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a115" ANNOTATION_REF="a35">
+                <ANNOTATION_VALUE>mm, cuando nos da fiebre y todo el calor de nuestro cuerpo entra en los intestinos.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a116" ANNOTATION_REF="a36">
+                <ANNOTATION_VALUE>Debes tomar en té, se toma en té para calmar el dolor de estómago.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a118" ANNOTATION_REF="a37">
+                <ANNOTATION_VALUE>No sé si conozcas el huichín, así, así se toma sólo en tecito, como si fuera, como si fuera agua nada más.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a119" ANNOTATION_REF="a38">
+                <ANNOTATION_VALUE>Sólo agua nada más, se hierven las hojas y se toma. Así es.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a120" ANNOTATION_REF="a39">
+                <ANNOTATION_VALUE>Y pues es sólo para eso,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a121" ANNOTATION_REF="a40">
+                <ANNOTATION_VALUE>el tronco también se puede cortar para leña, sólo que la leña se seca muy despacio porque</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a122" ANNOTATION_REF="a41">
+                <ANNOTATION_VALUE>por qué, este el agua..., la madera tiene mucho jugo. Así es.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a123" ANNOTATION_REF="a42">
+                <ANNOTATION_VALUE>No sé si quieras hacer otra pregunta más,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a124" ANNOTATION_REF="a43">
+                <ANNOTATION_VALUE>no sé si lo..., si entendiste todo lo que te platiqué.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a125" ANNOTATION_REF="a45">
+                <ANNOTATION_VALUE>Sus hojas son..., son..., son..., son un poco alargadas y delgadas no muy anchas, así son..., así son.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a126" ANNOTATION_REF="a46">
+                <ANNOTATION_VALUE>Y son..., son...,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a127" ANNOTATION_REF="a47">
+                <ANNOTATION_VALUE>un poco, son..., son..., un poco digamos nosotros son pubescentes. </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a128" ANNOTATION_REF="a48">
+                <ANNOTATION_VALUE>Sus hojas no son muy..., muy lisas, sus hojas son un poco pubescentes y son..., este</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a129" ANNOTATION_REF="a49">
+                <ANNOTATION_VALUE>tiene va..., tiene muchas ra..., ramas.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a130" ANNOTATION_REF="a50">
+                <ANNOTATION_VALUE>Tiene muchas ramas, </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a131" ANNOTATION_REF="a51">
+                <ANNOTATION_VALUE>y donde tiene sus ramas, en cada lado del tallo tie..., tiene sus ramas y ahí se encuentran las ho..., </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a132" ANNOTATION_REF="a52">
+                <ANNOTATION_VALUE>todas las ho..., las hojas, el árbol es muy frondoso, Mmm.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a139" ANNOTATION_REF="a54">
+                <ANNOTATION_VALUE>Sus flores son de color rojo.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a140" ANNOTATION_REF="a55">
+                <ANNOTATION_VALUE>Hay n..., hay flores de color rojo fuerte y hay</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a141" ANNOTATION_REF="a56">
+                <ANNOTATION_VALUE>flores que son un poco rojos nada más, son colores bajos, bajos, no son rojos con color fuerte. </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a142" ANNOTATION_REF="a57">
+                <ANNOTATION_VALUE>Hay unos de color rojo fuerte, hay de éste color,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a143" ANNOTATION_REF="a58">
+                <ANNOTATION_VALUE>y hay flores con color medio ba..., digamos con un color rojo bajo. Así es.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a144" ANNOTATION_REF="a64">
+                <ANNOTATION_VALUE>Sí.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a145" ANNOTATION_REF="a65">
+                <ANNOTATION_VALUE>No, nunca, nunca se..., sus frutos no se comen como los capulines de otras plantas. Sólo para,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a146" ANNOTATION_REF="a66">
+                <ANNOTATION_VALUE>yo pienso que ni, ni los pájaros aprovechan para alimentarse de éstos frutos porque nunca ve uno que,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a148" ANNOTATION_REF="a67">
+                <ANNOTATION_VALUE>se encuentren unos pájaros en el árbol. Mmm.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a149" ANNOTATION_REF="a69">
+                <ANNOTATION_VALUE>Ahí se pudre.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a150" ANNOTATION_REF="a70">
+                <ANNOTATION_VALUE>Sí, se puede usar para leña como te platicaba, pero se..., decimos nosotros que se seca muy despacio.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a151" ANNOTATION_REF="a71">
+                <ANNOTATION_VALUE>Es que la madera absorbe mucha agua, esa madera contiene mucha agua y si lo apilaste así como, </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a152" ANNOTATION_REF="a72">
+                <ANNOTATION_VALUE>y que este..., que, que se..., que se moje con la lluvia,  </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a153" ANNOTATION_REF="a73">
+                <ANNOTATION_VALUE>con el agua sigue siendo verde.No se puede secar. Ahí sigue viva, viva, viva la madera</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a154" ANNOTATION_REF="a74">
+                <ANNOTATION_VALUE>La leña la tiene..., tienes que secar, tienes que poner al sol, que la leña quede tendida en el suelo para que se seque.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a155" ANNOTATION_REF="a75">
+                <ANNOTATION_VALUE>Pero si la apilaste, entonces la apilaste, ahí sigue viva la madera, no se puede secar. Así es.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a160" ANNOTATION_REF="a77">
+                <ANNOTATION_VALUE>El tallo sí,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a161" ANNOTATION_REF="a78">
+                <ANNOTATION_VALUE>si uno si..., si uno sie..., también, también hay un tiempo para sembrar.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a162" ANNOTATION_REF="a79">
+                <ANNOTATION_VALUE>No en cualquier tiempo, hay..., en los días de luna tierna hay que sembrar, se puede usar para corral y si retoña. Sí retoña porque contiene mucha agua.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a163" ANNOTATION_REF="a80">
+                <ANNOTATION_VALUE>El agua que tiene le..., le ayuda para retoñar. </ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a164" ANNOTATION_REF="a81">
+                <ANNOTATION_VALUE>Por eso te digo que si la leña lo tiras en cualquier lugar, lo apilas o lo echas por ahí x..., lo</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a165" ANNOTATION_REF="a82">
+                <ANNOTATION_VALUE>digamos que amontonas,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a166" ANNOTATION_REF="a83">
+                <ANNOTATION_VALUE>ahí sigue estando ver...,verde, no se puede secar.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a167" ANNOTATION_REF="a84">
+                <ANNOTATION_VALUE>Si cortas leña tienes que regar, no debe estar amontonada, y es necesario que le pegue el sol,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a156" ANNOTATION_REF="a85">
+                <ANNOTATION_VALUE>para que se seque bien. Mmm.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a168" ANNOTATION_REF="a87">
+                <ANNOTATION_VALUE>No, yo sé que para to..., tomar se hierve sóla.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a169" ANNOTATION_REF="a88">
+                <ANNOTATION_VALUE>Ahora, a..., ahora para lavar un grano o la herida de una cortada.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a170" ANNOTATION_REF="a89">
+                <ANNOTATION_VALUE>la hierba se usa sóla.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a171" ANNOTATION_REF="a90">
+                <ANNOTATION_VALUE>Hay que lavar bien la herida y enseguida hay que..., hay que ponerle este,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a172" ANNOTATION_REF="a91">
+                <ANNOTATION_VALUE>algún polv..., alguna medicina,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a173" ANNOTATION_REF="a92">
+                <ANNOTATION_VALUE>medicina de farmacia o, o, o como este..., algún medicamento porque acá nosotros pues usa..., usa..., usa..., usa..., usamos las plantas.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a174" ANNOTATION_REF="a93">
+                <ANNOTATION_VALUE>No usamos este, pomadas, las pomadas son de farmacia, las medicinas de farmacia decimos nosotros. Uhuh.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a175" ANNOTATION_REF="a95">
+                <ANNOTATION_VALUE>Yo me llamo Rubén Macario, vengo de acá de Chilkowtah,</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a176" ANNOTATION_REF="a96">
+                <ANNOTATION_VALUE>cerca de San Miguel, pertenecemos en San Miguel.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+        <ANNOTATION>
+            <REF_ANNOTATION ANNOTATION_ID="a177" ANNOTATION_REF="a97">
+                <ANNOTATION_VALUE>Sí, pertenecemos en San Miguel.</ANNOTATION_VALUE>
+            </REF_ANNOTATION>
+        </ANNOTATION>
+    </TIER>
+    <LINGUISTIC_TYPE GRAPHIC_REFERENCES="false" LINGUISTIC_TYPE_ID="Transcripción" TIME_ALIGNABLE="true"/>
+    <LINGUISTIC_TYPE GRAPHIC_REFERENCES="false" LINGUISTIC_TYPE_ID="Comentarios" TIME_ALIGNABLE="true"/>
+    <LINGUISTIC_TYPE CONSTRAINTS="Symbolic_Association" GRAPHIC_REFERENCES="false" LINGUISTIC_TYPE_ID="Traducción" TIME_ALIGNABLE="false"/>
+    <LOCALE COUNTRY_CODE="EN" LANGUAGE_CODE="us"/>
+    <LOCALE COUNTRY_CODE="US" LANGUAGE_CODE="en"/>
+    <LANGUAGE LANG_DEF="http://cdb.iso.org/lg/CDB-00130975-001" LANG_ID="und" LANG_LABEL="undetermined (und)"/>
+    <CONSTRAINT DESCRIPTION="Time subdivision of parent annotation's time interval, no time gaps allowed within this interval" STEREOTYPE="Time_Subdivision"/>
+    <CONSTRAINT DESCRIPTION="Symbolic subdivision of a parent annotation. Annotations refering to the same parent are ordered" STEREOTYPE="Symbolic_Subdivision"/>
+    <CONSTRAINT DESCRIPTION="1-1 association with a parent annotation" STEREOTYPE="Symbolic_Association"/>
+    <CONSTRAINT DESCRIPTION="Time alignable annotations within the parent annotation's time interval, gaps are allowed" STEREOTYPE="Included_In"/>
+    <CONTROLLED_VOCABULARY CV_ID="TurnModeCV">
+        <DESCRIPTION LANG_REF="und">All values that are allowed for Transcriber Turn.mode attribute</DESCRIPTION>
+        <CV_ENTRY_ML CVE_ID="cveid0">
+            <CVE_VALUE LANG_REF="und">spontaneous</CVE_VALUE>
+        </CV_ENTRY_ML>
+        <CV_ENTRY_ML CVE_ID="cveid1">
+            <CVE_VALUE LANG_REF="und">planned</CVE_VALUE>
+        </CV_ENTRY_ML>
+    </CONTROLLED_VOCABULARY>
+    <CONTROLLED_VOCABULARY CV_ID="TurnFidelityCV">
+        <DESCRIPTION LANG_REF="und">All values that are allowed for Transcriber Turn.fidelity attribute</DESCRIPTION>
+        <CV_ENTRY_ML CVE_ID="cveid0">
+            <CVE_VALUE LANG_REF="und">high</CVE_VALUE>
+        </CV_ENTRY_ML>
+        <CV_ENTRY_ML CVE_ID="cveid1">
+            <CVE_VALUE LANG_REF="und">medium</CVE_VALUE>
+        </CV_ENTRY_ML>
+        <CV_ENTRY_ML CVE_ID="cveid2">
+            <CVE_VALUE LANG_REF="und">low</CVE_VALUE>
+        </CV_ENTRY_ML>
+    </CONTROLLED_VOCABULARY>
+    <CONTROLLED_VOCABULARY CV_ID="SectionTypeCV">
+        <DESCRIPTION LANG_REF="und">All values that are allowed for Transcriber Section.type attribute</DESCRIPTION>
+        <CV_ENTRY_ML CVE_ID="cveid0">
+            <CVE_VALUE LANG_REF="und">report</CVE_VALUE>
+        </CV_ENTRY_ML>
+        <CV_ENTRY_ML CVE_ID="cveid1">
+            <CVE_VALUE LANG_REF="und">nontrans</CVE_VALUE>
+        </CV_ENTRY_ML>
+        <CV_ENTRY_ML CVE_ID="cveid2">
+            <CVE_VALUE LANG_REF="und">filler</CVE_VALUE>
+        </CV_ENTRY_ML>
+    </CONTROLLED_VOCABULARY>
+    <CONTROLLED_VOCABULARY CV_ID="TurnChannelCV">
+        <DESCRIPTION LANG_REF="und">All values that are allowed for Transcriber Turn.channel attribute</DESCRIPTION>
+        <CV_ENTRY_ML CVE_ID="cveid0">
+            <CVE_VALUE LANG_REF="und">telephone</CVE_VALUE>
+        </CV_ENTRY_ML>
+        <CV_ENTRY_ML CVE_ID="cveid1">
+            <CVE_VALUE LANG_REF="und">studio</CVE_VALUE>
+        </CV_ENTRY_ML>
+    </CONTROLLED_VOCABULARY>
+</ANNOTATION_DOCUMENT>

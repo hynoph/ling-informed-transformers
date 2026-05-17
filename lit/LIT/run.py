@@ -374,7 +374,7 @@ def main() -> None:
 
     # Splits + span boundaries
     log.info("Loading splits from %s", p["splits_dir"])
-    splits, span_splits = load_splits(p["splits_dir"])
+    splits, span_splits, *extra = load_splits(p["splits_dir"])
 
     # Check whether span boundaries were actually saved (non-empty)
     has_spans = any(

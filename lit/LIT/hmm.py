@@ -67,7 +67,9 @@ class HMM:
 
         log_pi = _log_dirichlet((self.n,))
         log_A  = _log_dirichlet((self.n, self.n))   # (n_dest, n_src)
-        log_B  = _log_dirichlet((self.m, self.n))   # (vocab, n_states)
+        # Each column (state) must be a distribution over vocab tokens.
+        # Sample n independent Dirichlet(1^m) vectors, then transpose.
+        log_B  = _log_dirichlet((self.n, self.m)).T  # (vocab, n_states)
         return log_pi, log_A, log_B
 
     # ------------------------------------------------------------------
@@ -237,6 +239,10 @@ class HMM:
 
         log_B_den  = self._lse(gamma_cat, dim=1)        # (n,)
         self.log_B = log_B_num - log_B_den.unsqueeze(0) # (m, n)
+        # Floor so tokens unseen during EM (e.g. BOS/EOS added by the DataLoader)
+        # never get -inf emission, which collapses forward vars and produces NaN.
+        self.log_B = self.log_B.clamp(min=-50.0)
+        self.log_B = self.log_B - self._lse(self.log_B, dim=0).unsqueeze(0)
 
     # ------------------------------------------------------------------
     # Public API

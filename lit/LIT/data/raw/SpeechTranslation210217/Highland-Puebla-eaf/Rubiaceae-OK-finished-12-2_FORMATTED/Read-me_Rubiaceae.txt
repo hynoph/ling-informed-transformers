@@ -1,0 +1,11 @@
+Read me: Rubiaceae
+There are 14 Rubiaceae recordings:
+
+13 have been transcribed and translated
+
+1 has been left transcribed but untranslated due to the poor quality of the discussion. This is 
+Tzina_Botan_AND308_Rubiaceae-tsotsokapahxiwit_2013-07-21-r.wav
+For clear understanding the .eaf filename ends in no-traducido to make clear that the eaf is only a transcription.
+
+1 has been left transcribed and untranslated due to a pending decision as to whether to translate. This is 
+Tzina_Botan_AND308-MFC307_witsikiteempiil-Rubiaceae_2010-07-29-b.wav
