@@ -1,132 +1,18 @@
-21:44:02 | INFO     | run | Device: cpu
-21:44:02 | INFO     | run | Run directory: C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run
-21:49:40 | INFO     | run | Device: cpu
-21:49:40 | INFO     | run | Run directory: c:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run
-21:49:40 | INFO     | run | Vocabulary size: 8476
-21:49:40 | INFO     | run | Loading splits from c:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\data\splits
-21:51:33 | INFO     | run | Device: cpu
-21:51:33 | INFO     | run | Run directory: c:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run
-21:51:33 | INFO     | run | Vocabulary size: 8476
-21:51:33 | INFO     | run | Loading splits from c:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\data\splits
-22:11:03 | INFO     | run | Device: cpu
-22:11:03 | INFO     | run | Run directory: C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run
-22:11:03 | INFO     | run | Vocabulary size: 8476
-22:11:03 | INFO     | run | Loading splits from C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\data\splits
-22:11:55 | INFO     | run | Device: cpu
-22:11:55 | INFO     | run | Run directory: C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run
-22:11:55 | INFO     | run | Vocabulary size: 8476
-22:11:55 | INFO     | run | Loading splits from C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\data\splits
-22:11:55 | INFO     | run | Span boundaries available: False
-22:11:55 | INFO     | run |   train: 30445 sequences | 507000 tokens
-22:11:55 | INFO     | run |   val: 3805 sequences | 63609 tokens
-22:11:55 | INFO     | run |   test: 3808 sequences | 62249 tokens
-22:11:55 | INFO     | src.data.dataset | MorphemeDataset: 30445 sequences -> 30447 windows (ctx=256, stride=128, spans=no)
-22:11:55 | INFO     | src.data.dataset | train DataLoader: 30447 windows | 951 batches | batch_size=32 | spans=no
-22:11:55 | INFO     | src.data.dataset | MorphemeDataset: 3805 sequences -> 3805 windows (ctx=256, stride=128, spans=no)
-22:11:55 | INFO     | src.data.dataset | val DataLoader: 3805 windows | 119 batches | batch_size=32 | spans=no
-22:11:55 | INFO     | src.data.dataset | MorphemeDataset: 3808 sequences -> 3808 windows (ctx=256, stride=128, spans=no)
-22:11:55 | INFO     | src.data.dataset | test DataLoader: 3808 windows | 119 batches | batch_size=32 | spans=no
-22:11:55 | INFO     | run | Training HMM: n_states=16, n_obs=8476, sequences=30445, iters=20
-22:14:05 | INFO     | run | Device: cpu
-22:14:05 | INFO     | run | Run directory: C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run
-22:14:05 | INFO     | run | Vocabulary size: 8476
-22:14:05 | INFO     | run | Loading splits from C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\data\splits
-22:14:05 | INFO     | run | Span boundaries available: False
-22:14:05 | INFO     | run |   train: 30445 sequences | 507000 tokens
-22:14:05 | INFO     | run |   val: 3805 sequences | 63609 tokens
-22:14:05 | INFO     | run |   test: 3808 sequences | 62249 tokens
-22:14:06 | INFO     | src.data.dataset | MorphemeDataset: 30445 sequences -> 30447 windows (ctx=256, stride=128, spans=no)
-22:14:06 | INFO     | src.data.dataset | train DataLoader: 30447 windows | 951 batches | batch_size=32 | spans=no
-22:14:06 | INFO     | src.data.dataset | MorphemeDataset: 3805 sequences -> 3805 windows (ctx=256, stride=128, spans=no)
-22:14:06 | INFO     | src.data.dataset | val DataLoader: 3805 windows | 119 batches | batch_size=32 | spans=no
-22:14:06 | INFO     | src.data.dataset | MorphemeDataset: 3808 sequences -> 3808 windows (ctx=256, stride=128, spans=no)
-22:14:06 | INFO     | src.data.dataset | test DataLoader: 3808 windows | 119 batches | batch_size=32 | spans=no
-22:14:06 | INFO     | run | Training HMM: n_states=16, n_obs=8476, sequences=30445, iters=20
-22:46:50 | INFO     | run | HMM training complete. Saved -> C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\data\processed\hmm.pt
-22:46:50 | INFO     | run | Training LIT Transformer...
-22:46:50 | INFO     | run | LIT: d=256 | heads=4 | layers=4 | d_ff=1024 | params=7,503,136 | span_temp=2.0→10.0
-22:46:50 | INFO     | run | λ schedule: warmup_frac=0.15 | 1.0 → 0.0 | span KL level: token-level (no span boundaries found)
-23:41:01 | INFO     | run | Epoch   1/30 | train — total=nan  ce=nan  kl=nan | λ=1.0000 | 3241.7s
-23:44:33 | INFO     | run |          val  — total=nan  ce=nan  kl=nan
-00:37:38 | INFO     | run | Epoch   2/30 | train — total=nan  ce=nan  kl=nan | λ=1.0000 | 3184.9s
-00:41:09 | INFO     | run |          val  — total=nan  ce=nan  kl=nan
-01:34:44 | INFO     | run | Epoch   3/30 | train — total=nan  ce=nan  kl=nan | λ=1.0000 | 3214.9s
-01:38:15 | INFO     | run |          val  — total=nan  ce=nan  kl=nan
-02:32:06 | INFO     | run | Epoch   4/30 | train — total=nan  ce=nan  kl=nan | λ=1.0000 | 3230.7s
-02:35:54 | INFO     | run |          val  — total=nan  ce=nan  kl=nan
-03:29:39 | INFO     | run | Epoch   5/30 | train — total=nan  ce=nan  kl=nan | λ=0.9804 | 3224.2s
-03:33:18 | INFO     | run |          val  — total=nan  ce=nan  kl=nan
-04:27:15 | INFO     | run | Epoch   6/30 | train — total=nan  ce=nan  kl=nan | λ=0.9412 | 3236.3s
-04:30:45 | INFO     | run |          val  — total=nan  ce=nan  kl=nan
-05:24:59 | INFO     | run | Epoch   7/30 | train — total=nan  ce=nan  kl=nan | λ=0.9019 | 3254.1s
-05:28:30 | INFO     | run |          val  — total=nan  ce=nan  kl=nan
-06:22:25 | INFO     | run | Epoch   8/30 | train — total=nan  ce=nan  kl=nan | λ=0.8627 | 3234.4s
-06:26:08 | INFO     | run |          val  — total=nan  ce=nan  kl=nan
-07:19:57 | INFO     | run | Epoch   9/30 | train — total=nan  ce=nan  kl=nan | λ=0.8235 | 3229.3s
-07:23:38 | INFO     | run |          val  — total=nan  ce=nan  kl=nan
-08:17:29 | INFO     | run | Epoch  10/30 | train — total=nan  ce=nan  kl=nan | λ=0.7843 | 3231.1s
-08:21:10 | INFO     | run |          val  — total=nan  ce=nan  kl=nan
-20:07:35 | INFO     | run | Device: cpu
-20:07:35 | INFO     | run | Run directory: C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run
-20:07:35 | INFO     | run | Vocabulary size: 8476
-20:07:35 | INFO     | run | Loading splits from C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\data\splits
-20:07:35 | INFO     | run | Span boundaries available: False
-20:07:35 | INFO     | run |   train: 30445 sequences | 507000 tokens
-20:07:35 | INFO     | run |   val: 3805 sequences | 63609 tokens
-20:07:35 | INFO     | run |   test: 3808 sequences | 62249 tokens
-20:07:36 | INFO     | src.data.dataset | MorphemeDataset: 30445 sequences -> 30447 windows (ctx=256, stride=128, spans=no)
-20:07:36 | INFO     | src.data.dataset | train DataLoader: 30447 windows | 951 batches | batch_size=32 | spans=no
-20:07:36 | INFO     | src.data.dataset | MorphemeDataset: 3805 sequences -> 3805 windows (ctx=256, stride=128, spans=no)
-20:07:36 | INFO     | src.data.dataset | val DataLoader: 3805 windows | 119 batches | batch_size=32 | spans=no
-20:07:36 | INFO     | src.data.dataset | MorphemeDataset: 3808 sequences -> 3808 windows (ctx=256, stride=128, spans=no)
-20:07:36 | INFO     | src.data.dataset | test DataLoader: 3808 windows | 119 batches | batch_size=32 | spans=no
-20:07:36 | INFO     | run | Training HMM: n_states=16, n_obs=8476, sequences=30445, iters=20
-20:28:18 | INFO     | run | Device: cpu
-20:28:18 | INFO     | run | Run directory: C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run
-20:28:18 | INFO     | run | Vocabulary size: 8476
-20:28:18 | INFO     | run | Loading splits from C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\data\splits
-20:28:19 | INFO     | run | Span boundaries available: False
-20:28:19 | INFO     | run |   train: 30445 sequences | 507000 tokens
-20:28:19 | INFO     | run |   val: 3805 sequences | 63609 tokens
-20:28:19 | INFO     | run |   test: 3808 sequences | 62249 tokens
-20:28:19 | INFO     | src.data.dataset | MorphemeDataset: 30445 sequences -> 30447 windows (ctx=256, stride=128, spans=no)
-20:28:19 | INFO     | src.data.dataset | train DataLoader: 30447 windows | 951 batches | batch_size=32 | spans=no
-20:28:19 | INFO     | src.data.dataset | MorphemeDataset: 3805 sequences -> 3805 windows (ctx=256, stride=128, spans=no)
-20:28:19 | INFO     | src.data.dataset | val DataLoader: 3805 windows | 119 batches | batch_size=32 | spans=no
-20:28:19 | INFO     | src.data.dataset | MorphemeDataset: 3808 sequences -> 3808 windows (ctx=256, stride=128, spans=no)
-20:28:19 | INFO     | src.data.dataset | test DataLoader: 3808 windows | 119 batches | batch_size=32 | spans=no
-20:28:19 | INFO     | run | Training HMM: n_states=16, n_obs=8476, sequences=30445, iters=20
-21:06:03 | INFO     | run | HMM training complete. Saved -> C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\data\processed\hmm.pt
-21:06:03 | INFO     | run | Training LIT Transformer...
-21:06:03 | INFO     | run | LIT: d=256 | heads=4 | layers=4 | d_ff=1024 | params=7,503,136 | span_temp=2.0→10.0
-21:06:03 | INFO     | run | λ schedule: warmup_frac=0.15 | 1.0 → 0.0 | span KL level: token-level (no span boundaries found)
-22:06:21 | INFO     | run | Epoch   1/30 | train — total=31.6678  ce=6.7193  kl=31.6678 | λ=1.0000 | 3605.7s
-22:10:05 | INFO     | run |          val  — total=7.0021  ce=7.1415  kl=7.0021
-22:10:05 | INFO     | run |   ↳ new best val loss 7.0021 — saved C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run\best.pt
-23:04:32 | INFO     | run | Epoch   2/30 | train — total=5.0401  ce=7.0646  kl=5.0401 | λ=1.0000 | 3267.4s
-23:08:08 | INFO     | run |          val  — total=4.4294  ce=7.5368  kl=4.4294
-23:08:08 | INFO     | run |   ↳ new best val loss 4.4294 — saved C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run\best.pt
-00:02:30 | INFO     | run | Epoch   3/30 | train — total=3.3647  ce=7.2857  kl=3.3647 | λ=1.0000 | 3262.7s
-00:06:04 | INFO     | run |          val  — total=3.9396  ce=7.7254  kl=3.9396
-00:06:04 | INFO     | run |   ↳ new best val loss 3.9396 — saved C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run\best.pt
-01:00:51 | INFO     | run | Epoch   4/30 | train — total=2.8991  ce=7.4047  kl=2.8991 | λ=1.0000 | 3287.6s
-01:04:26 | INFO     | run |          val  — total=3.5100  ce=7.8357  kl=3.5100
-01:04:26 | INFO     | run |   ↳ new best val loss 3.5100 — saved C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run\best.pt
-01:58:34 | INFO     | run | Epoch   5/30 | train — total=2.6556  ce=7.1672  kl=2.6355 | λ=0.9804 | 3248.4s
-02:02:18 | INFO     | run |          val  — total=3.5291  ce=7.0279  kl=3.4591
-02:56:19 | INFO     | run | Epoch   6/30 | train — total=2.6539  ce=6.6928  kl=2.4892 | λ=0.9412 | 3241.4s
-02:59:55 | INFO     | run |          val  — total=3.7045  ce=6.8781  kl=3.5061
-03:54:04 | INFO     | run | Epoch   7/30 | train — total=2.6813  ce=6.6063  kl=2.3474 | λ=0.9019 | 3249.1s
-03:57:38 | INFO     | run |          val  — total=3.6188  ce=6.8131  kl=3.2715
-04:51:40 | INFO     | run | Epoch   8/30 | train — total=2.7692  ce=6.5374  kl=2.2676 | λ=0.8627 | 3242.8s
-04:55:22 | INFO     | run |          val  — total=3.7596  ce=6.7205  kl=3.2885
-05:49:16 | INFO     | run | Epoch   9/30 | train — total=2.8783  ce=6.4781  kl=2.2097 | λ=0.8235 | 3233.6s
-05:52:59 | INFO     | run |          val  — total=3.9079  ce=6.6262  kl=3.3253
-06:47:10 | INFO     | run | Epoch  10/30 | train — total=2.9642  ce=6.4173  kl=2.1228 | λ=0.7843 | 3251.3s
-06:50:53 | INFO     | run |          val  — total=4.0830  ce=6.5884  kl=3.3939
-10:32:42 | INFO     | run | Epoch  11/30 | train — total=3.0669  ce=6.3605  kl=2.0542 | λ=0.7451 | 13309.3s
-10:37:23 | INFO     | run |          val  — total=4.2303  ce=6.5178  kl=3.4476
-11:44:53 | INFO     | run | Epoch  12/30 | train — total=3.2012  ce=6.3049  kl=2.0276 | λ=0.7059 | 4050.5s
-11:49:40 | INFO     | run |          val  — total=4.3612  ce=6.4527  kl=3.4896
-14:02:23 | INFO     | run | Epoch  13/30 | train — total=3.3394  ce=6.2472  kl=2.0112 | λ=0.6667 | 7963.2s
-14:06:07 | INFO     | run |          val  — total=4.4597  ce=6.3912  kl=3.4939
+21:03:43 | INFO     | run | Device: cpu
+21:03:43 | INFO     | run | Run directory: C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\logs\lit_run
+21:03:43 | INFO     | run | Vocabulary size: 8476
+21:03:43 | INFO     | run | Loading splits from C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\data\splits
+21:03:43 | INFO     | run | Span boundaries available: False
+21:03:43 | INFO     | run |   train: 30445 sequences | 507000 tokens
+21:03:43 | INFO     | run |   val: 3805 sequences | 63609 tokens
+21:03:43 | INFO     | run |   test: 3808 sequences | 62249 tokens
+21:03:43 | INFO     | src.data.dataset | MorphemeDataset: 30445 sequences -> 30447 windows (ctx=256, stride=128, spans=no)
+21:03:43 | INFO     | src.data.dataset | train DataLoader: 30447 windows | 951 batches | batch_size=32 | spans=no
+21:03:43 | INFO     | src.data.dataset | MorphemeDataset: 3805 sequences -> 3805 windows (ctx=256, stride=128, spans=no)
+21:03:43 | INFO     | src.data.dataset | val DataLoader: 3805 windows | 119 batches | batch_size=32 | spans=no
+21:03:43 | INFO     | src.data.dataset | MorphemeDataset: 3808 sequences -> 3808 windows (ctx=256, stride=128, spans=no)
+21:03:43 | INFO     | src.data.dataset | test DataLoader: 3808 windows | 119 batches | batch_size=32 | spans=no
+21:03:43 | INFO     | run | Loading saved HMM from C:\Users\hynop\OneDrive\Documents\GitHub\ling-informed-transformers\lit\LIT\data\processed\hmm.pt
+21:03:43 | INFO     | run | Training LIT Transformer...
+21:03:44 | INFO     | run | LIT: d=256 | heads=4 | layers=4 | d_ff=1024 | params=7,503,136 | span_temp=2.0->10.0
+21:03:44 | INFO     | run | lam schedule: warmup_frac=0.15 | 0.5 -> 0.0 | span KL level: token-level (no span boundaries found)

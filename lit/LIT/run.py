@@ -155,6 +155,7 @@ def train_transformer(
     run_dir: Path,
     log: logging.Logger,
     has_spans: bool,
+    resume_from: Path | None = None,
 ) -> LIT:
     lit_cfg = cfg.get("lit", {})
     d_model  = int(lit_cfg.get("d_model",  256))
@@ -187,11 +188,11 @@ def train_transformer(
 
     n_params = sum(p.numel() for p in model.parameters())
     log.info(
-        "LIT: d=%d | heads=%d | layers=%d | d_ff=%d | params=%s | span_temp=%.1f→%.1f",
+        "LIT: d=%d | heads=%d | layers=%d | d_ff=%d | params=%s | span_temp=%.1f->%.1f",
         d_model, n_heads, n_layers, d_ff, f"{n_params:,}", span_t_start, span_t_end,
     )
     log.info(
-        "λ schedule: warmup_frac=%.2f | %.1f → %.1f | span KL level: %s",
+        "lam schedule: warmup_frac=%.2f | %.1f -> %.1f | span KL level: %s",
         warmup_frac, lam_start, lam_end,
         "span-level" if has_spans else "token-level (no span boundaries found)",
     )
@@ -203,8 +204,20 @@ def train_transformer(
     best_val_loss = float("inf")
     best_ckpt     = run_dir / "best.pt"
     step          = 0
+    start_epoch   = 1
 
-    for epoch in range(1, epochs + 1):
+    if resume_from is not None and resume_from.exists():
+        ckpt = torch.load(resume_from, map_location=DEVICE)
+        model.load_state_dict(ckpt["model"])
+        if "optimizer" in ckpt:
+            optimizer.load_state_dict(ckpt["optimizer"])
+        step          = ckpt.get("step", 0)
+        start_epoch   = ckpt.get("epoch", 0) + 1
+        best_val_loss = ckpt.get("val_ce", ckpt.get("val_loss", float("inf")))
+        log.info("Resumed from %s (epoch %d, step %d, best val CE %.4f)",
+                 resume_from, start_epoch - 1, step, best_val_loss)
+
+    for epoch in range(start_epoch, epochs + 1):
         model.train()
         epoch_ce = epoch_kl = epoch_total = 0.0
         t0 = time.time()
@@ -259,7 +272,7 @@ def train_transformer(
         lam_epoch = warmup_decay_schedule(step, total_steps, lam_start, lam_end, warmup_frac)
 
         log.info(
-            "Epoch %3d/%d | train — total=%.4f  ce=%.4f  kl=%.4f | λ=%.4f | %.1fs",
+            "Epoch %3d/%d | train — total=%.4f  ce=%.4f  kl=%.4f | lam=%.4f | %.1fs",
             epoch, epochs,
             epoch_total / n_batches,
             epoch_ce    / n_batches,
@@ -269,19 +282,28 @@ def train_transformer(
         )
 
         # Validation — use lam_epoch, not the stale per-step value
-        val_loss = evaluate(
+        val_loss, val_ce = evaluate(
             model, hmm, loaders["val"], lam_epoch, log,
             split="val", has_spans=has_spans,
         )
 
-        if val_loss < best_val_loss:
-            best_val_loss = val_loss
+        epoch_ckpt = run_dir / f"epoch_{epoch:03d}.pt"
+        torch.save(
+            {"epoch": epoch, "model": model.state_dict(),
+             "optimizer": optimizer.state_dict(), "val_loss": val_loss,
+             "val_ce": val_ce, "step": step},
+            epoch_ckpt,
+        )
+
+        if val_ce < best_val_loss:
+            best_val_loss = val_ce
             torch.save(
                 {"epoch": epoch, "model": model.state_dict(),
-                 "val_loss": val_loss, "step": step},
+                 "optimizer": optimizer.state_dict(), "val_loss": val_loss,
+                 "val_ce": val_ce, "step": step},
                 best_ckpt,
             )
-            log.info("  ↳ new best val loss %.4f — saved %s", val_loss, best_ckpt)
+            log.info("  ↳ new best val CE %.4f — saved %s", val_ce, best_ckpt)
 
     final_ckpt = run_dir / "final.pt"
     torch.save({"epoch": epochs, "model": model.state_dict(), "step": step}, final_ckpt)
@@ -337,7 +359,7 @@ def evaluate(
         "         %s  — total=%.4f  ce=%.4f  kl=%.4f",
         split, total_loss / n, ce_loss / n, kl_loss / n,
     )
-    return total_loss / n
+    return total_loss / n, ce_loss / n
 
 
 # ---------------------------------------------------------------------------
@@ -350,6 +372,8 @@ def main() -> None:
     parser.add_argument("--run_name", default="lit_run")
     parser.add_argument("--skip_hmm", action="store_true",
                         help="Load a saved HMM instead of retraining")
+    parser.add_argument("--resume", action="store_true",
+                        help="Resume transformer training from best.pt in the run directory")
     args = parser.parse_args()
 
     config_path  = Path(args.config)
@@ -411,14 +435,16 @@ def main() -> None:
 
     # Transformer
     log.info("Training LIT Transformer...")
+    resume_from = (run_dir / "best.pt") if args.resume else None
     model = train_transformer(
-        hmm       = hmm,
-        loaders   = loaders,
-        vocab_size = vocab_size,
-        cfg       = cfg,
-        run_dir   = run_dir,
-        log       = log,
-        has_spans = has_spans,
+        hmm         = hmm,
+        loaders     = loaders,
+        vocab_size  = vocab_size,
+        cfg         = cfg,
+        run_dir     = run_dir,
+        log         = log,
+        has_spans   = has_spans,
+        resume_from = resume_from,
     )
 
     # Final test evaluation at lam_end
@@ -427,7 +453,7 @@ def main() -> None:
     evaluate(
         model, hmm, loaders["test"], lam=lam_end, log=log,
         split="test", has_spans=has_spans,
-    )
+    )  # return value unused — just for logging
 
     log.info("Done. Artefacts in %s", run_dir)
 

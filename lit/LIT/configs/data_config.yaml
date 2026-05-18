@@ -77,7 +77,7 @@ lit:
   dropout:    0.1
   lr:         3e-4
   epochs:     30
-  lam_start:  1.0
+  lam_start:  0.5
   lam_end:    0.0
   span_temp_start: 2.0
   span_temp_end:   10.0
