@@ -663,3 +663,17 @@ class StandardTransformer(nn.Module):
             targets.reshape(-1),
             ignore_index=self.pad_idx,
         )
+
+def warmup_decay_schedule(
+    step: int,
+    total_steps: int,
+    warmup_steps: int = 1000,
+    max_lr: float = 3e-4,
+    min_lr: float = 1e-5,
+) -> float:
+    """Simple warmup then cosine decay schedule"""
+    if step < warmup_steps:
+        return max_lr * (step + 1) / warmup_steps
+    else:
+        progress = (step - warmup_steps) / max(1, total_steps - warmup_steps)
+        return min_lr + 0.5 * (max_lr - min_lr) * (1 + math.cos(math.pi * progress))
