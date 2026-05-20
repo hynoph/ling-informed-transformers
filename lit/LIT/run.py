@@ -1,251 +1,461 @@
 """
-generate_spans.py
+run.py — Unified training script for the LIT pipeline.
 
-Generate morpheme/span boundary files for the LIT pipeline.
+Flow:
+  1. Load config + vocabulary + splits + span boundaries (from pipeline.py)
+  2. Train (or load) the HMM on the train split
+  3. Train the LIT Transformer with span-level HMM KL soft constraint
+  4. Evaluate on val and test splits
+  5. Save checkpoints and logs
 
-Outputs:
-    data/splits/train.spans
-    data/splits/val.spans
-    data/splits/test.spans
+Usage:
+    python run.py --config configs/data_config.yaml
+    python run.py --config configs/data_config.yaml --skip_hmm
 
-These files are automatically discovered by run.py via:
-
-    load_splits(p["splits_dir"])
-
-Requirements:
-    data/processed/combined_segmented.txt
-    data/splits/train.pkl
-    data/splits/val.pkl
-    data/splits/test.pkl
-
-Assumptions:
-    - Each line in combined_segmented.txt corresponds to ONE sequence.
-    - Morphemes are whitespace-separated.
-    - Line ordering matches the ordering used when creating train/val/test splits.
+Changes vs original:
+  - lam staleness fix: evaluate() now receives lam computed at epoch boundary,
+    not the last batch's step value.
+  - Span boundaries loaded from splits and threaded into DataLoaders and
+    the training loop so KL is computed at morpheme/span level.
+  - forward_spans() + predict_proba_spans() used when spans available.
+  - SpanAttention temperature annealed from soft (2.0) to hard (10.0) over
+    training so the span gate boundaries sharpen as training progresses.
+  - Lambda schedule uses a warmup-then-decay shape: λ stays at lam_start
+    for warmup_frac of training, then linearly decays to lam_end.  This
+    keeps the HMM as a strong anchor while the Transformer is still random.
+  - Import fixed to match actual filename: span_transformer (not transformer).
 """
 
-import pickle
+import argparse
+import json
+import logging
+import os
+import sys
+import time
 from pathlib import Path
 
+import torch
+import torch.optim as optim
+from torch.utils.data import DataLoader
+
+sys.path.insert(0, str(Path(__file__).parent))
+
+from src.data.vocab   import Vocabulary
+from src.data.dataset import build_dataloaders
+from src.data.split   import load_splits
+from hmm              import HMM, DEVICE
+from span_transformer import LIT, lambda_schedule
+
+LOG_FMT  = "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
+LOG_DATE = "%H:%M:%S"
+
 
 # ---------------------------------------------------------------------------
-# Paths
+# Logging
 # ---------------------------------------------------------------------------
 
-BASE_DIR      = Path("data")
-SPLITS_DIR    = BASE_DIR / "splits"
-PROCESSED_DIR = BASE_DIR / "processed"
-
-SEGMENTED_FILE = PROCESSED_DIR / "combined_segmented.txt"
+def setup_logging(log_dir: str, run_name: str) -> logging.Logger:
+    Path(log_dir).mkdir(parents=True, exist_ok=True)
+    log_file = Path(log_dir) / f"{run_name}.log"
+    logging.basicConfig(
+        level    = logging.INFO,
+        format   = LOG_FMT,
+        datefmt  = LOG_DATE,
+        handlers = [
+            logging.StreamHandler(sys.stdout),
+            logging.FileHandler(log_file, encoding="utf-8"),
+        ],
+    )
+    return logging.getLogger("run")
 
 
 # ---------------------------------------------------------------------------
-# Utilities
+# Config
 # ---------------------------------------------------------------------------
 
-def load_pickle(path):
-    with open(path, "rb") as f:
-        return pickle.load(f)
-
-
-def save_pickle(obj, path):
-    with open(path, "wb") as f:
-        pickle.dump(obj, f)
-
-
-def load_segmented_lines(path):
-    """
-    Load segmented text lines.
-
-    Example line:
-        un break able
-
-    Returns:
-        list[str]
-    """
+def load_config(path: str) -> dict:
+    import yaml
     with open(path, encoding="utf-8") as f:
-        return [line.strip() for line in f if line.strip()]
+        return yaml.safe_load(f)
+
+
+def resolve_paths(cfg: dict, base_dir: Path) -> dict:
+    resolved          = dict(cfg)
+    resolved["paths"] = {k: str(base_dir / v) for k, v in cfg["paths"].items()}
+    return resolved
 
 
 # ---------------------------------------------------------------------------
-# Span extraction
+# Lambda schedule — warmup-then-decay
 # ---------------------------------------------------------------------------
 
-def extract_spans_from_line(line):
+def warmup_decay_schedule(
+    step: int,
+    total_steps: int,
+    lam_start: float  = 1.0,
+    lam_end: float    = 0.0,
+    warmup_frac: float = 0.15,
+) -> float:
     """
-    Convert a segmented line into span boundaries.
+    Keeps λ = lam_start for the first warmup_frac of training, then linearly
+    decays to lam_end.
 
-    Example:
-        "un break able"
-
-    Returns:
-        [(0,1), (1,2), (2,3)]
-
-    Each whitespace-separated unit is treated as one morpheme span.
+    Rationale: early in training the Transformer has random parameters, so the
+    HMM is the more reliable model.  A pure linear decay from step 0 halves
+    the KL weight by the mid-point of the first epoch, letting the Transformer
+    drift before it has learned anything useful.  The warmup period prevents
+    this while still guaranteeing full decay by the end of training.
+    (Inspired by KL annealing in VAEs.)
     """
-    morphemes = line.split()
-
-    spans = []
-    token_idx = 0
-
-    for morph in morphemes:
-        start = token_idx
-
-        # One token per morph
-        token_idx += 1
-
-        end = token_idx
-
-        spans.append((start, end))
-
-    return spans
+    if total_steps <= 0:
+        return lam_end
+    warmup_steps = int(total_steps * warmup_frac)
+    if step <= warmup_steps:
+        return lam_start
+    progress = (step - warmup_steps) / max(total_steps - warmup_steps, 1)
+    return lam_start + min(progress, 1.0) * (lam_end - lam_start)
 
 
-def build_all_spans(lines):
-    """
-    Generate span boundaries for all sequences.
-    """
-    return [extract_spans_from_line(line) for line in lines]
+# ---------------------------------------------------------------------------
+# HMM training
+# ---------------------------------------------------------------------------
+
+def train_hmm(
+    sequences: list[list[int]],
+    vocab_size: int,
+    cfg: dict,
+    save_path: str,
+    log: logging.Logger,
+) -> HMM:
+    hmm_cfg    = cfg.get("hmm", {})
+    n_states   = int(hmm_cfg.get("n_states", 16))
+    iterations = int(hmm_cfg.get("iterations", 20))
+
+    log.info(
+        "Training HMM: n_states=%d, n_obs=%d, sequences=%d, iters=%d",
+        n_states, vocab_size, len(sequences), iterations,
+    )
+
+    hmm = HMM(n_states=n_states, n_obs=vocab_size, device=DEVICE)
+    hmm.train(sequences, iterations=iterations, verbose=True)
+    hmm.save(save_path)
+    log.info("HMM training complete. Saved -> %s", save_path)
+    return hmm
+
+
+# ---------------------------------------------------------------------------
+# Transformer training
+# ---------------------------------------------------------------------------
+
+def train_transformer(
+    hmm: HMM,
+    loaders: dict[str, DataLoader],
+    vocab_size: int,
+    cfg: dict,
+    run_dir: Path,
+    log: logging.Logger,
+    has_spans: bool,
+    resume_from: Path | None = None,
+) -> LIT:
+    lit_cfg = cfg.get("lit", {})
+    d_model  = int(lit_cfg.get("d_model",  256))
+    n_heads  = int(lit_cfg.get("n_heads",  4))
+    n_layers = int(lit_cfg.get("n_layers", 4))
+    d_ff     = int(lit_cfg.get("d_ff",     1024))
+    dropout  = float(lit_cfg.get("dropout", 0.1))
+    lr       = float(lit_cfg.get("lr",      3e-4))
+    epochs   = int(lit_cfg.get("epochs",   30))
+    lam_start    = float(lit_cfg.get("lam_start",    1.0))
+    lam_end      = float(lit_cfg.get("lam_end",      0.0))
+    warmup_frac  = float(lit_cfg.get("warmup_frac",  0.15))
+    span_t_start = float(lit_cfg.get("span_temp_start", 2.0))
+    span_t_end   = float(lit_cfg.get("span_temp_end",  10.0))
+    ctx     = int(cfg["dataset"]["context_length"])
+    pad_idx = 0
+
+    model = LIT(
+        vocab_size       = vocab_size,
+        d_model          = d_model,
+        n_heads          = n_heads,
+        n_layers         = n_layers,
+        d_ff             = d_ff,
+        max_len          = ctx,
+        dropout          = dropout,
+        pad_idx          = pad_idx,
+        span_temp_start  = span_t_start,
+        span_temp_end    = span_t_end,
+    )
+
+    n_params = sum(p.numel() for p in model.parameters())
+    log.info(
+        "LIT: d=%d | heads=%d | layers=%d | d_ff=%d | params=%s | span_temp=%.1f->%.1f",
+        d_model, n_heads, n_layers, d_ff, f"{n_params:,}", span_t_start, span_t_end,
+    )
+    log.info(
+        "lam schedule: warmup_frac=%.2f | %.1f -> %.1f | span KL level: %s",
+        warmup_frac, lam_start, lam_end,
+        "span-level" if has_spans else "token-level (no span boundaries found)",
+    )
+
+    optimizer    = optim.AdamW(model.parameters(), lr=lr)
+    train_loader = loaders["train"]
+    total_steps  = epochs * len(train_loader)
+
+    best_val_loss = float("inf")
+    best_ckpt     = run_dir / "best.pt"
+    step          = 0
+    start_epoch   = 1
+
+    if resume_from is not None and resume_from.exists():
+        ckpt = torch.load(resume_from, map_location=DEVICE)
+        model.load_state_dict(ckpt["model"])
+        if "optimizer" in ckpt:
+            optimizer.load_state_dict(ckpt["optimizer"])
+        step          = ckpt.get("step", 0)
+        start_epoch   = ckpt.get("epoch", 0) + 1
+        best_val_loss = ckpt.get("val_ce", ckpt.get("val_loss", float("inf")))
+        log.info("Resumed from %s (epoch %d, step %d, best val CE %.4f)",
+                 resume_from, start_epoch - 1, step, best_val_loss)
+
+    for epoch in range(start_epoch, epochs + 1):
+        model.train()
+        epoch_ce = epoch_kl = epoch_total = 0.0
+        t0 = time.time()
+
+        for batch in train_loader:
+            # Unpack — batch may or may not include spans
+            if len(batch) == 3:
+                inp, tgt, span_boundaries = batch
+            else:
+                inp, tgt = batch
+                span_boundaries = None
+
+            inp = inp.to(DEVICE)
+            tgt = tgt.to(DEVICE)
+
+            lam = warmup_decay_schedule(step, total_steps, lam_start, lam_end, warmup_frac)
+
+            with torch.no_grad():
+                if has_spans and span_boundaries is not None:
+                    hmm_proba = hmm.predict_proba_spans(inp, span_boundaries)
+                else:
+                    hmm_proba = hmm.predict_proba(inp)
+
+            # Full forward pass for cross-entropy
+            logits = model(inp)
+
+            # Span-pooled forward for KL (or None if no spans)
+            if has_spans and span_boundaries is not None:
+                span_logits = model.forward_spans(inp, span_boundaries)
+            else:
+                span_logits = None
+
+            total, ce, kl = model.lit_loss(logits, tgt, hmm_proba, lam, span_logits)
+
+            optimizer.zero_grad()
+            total.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            optimizer.step()
+
+            epoch_ce    += ce.item()
+            epoch_kl    += kl.item()
+            epoch_total += total.item()
+            step        += 1
+
+        n_batches = len(train_loader)
+        elapsed   = time.time() - t0
+
+        # Anneal SpanAttention temperature
+        model.set_span_temperature(epoch / epochs)
+
+        # Compute lam at epoch boundary (not last batch's step) for logging + eval
+        lam_epoch = warmup_decay_schedule(step, total_steps, lam_start, lam_end, warmup_frac)
+
+        log.info(
+            "Epoch %3d/%d | train — total=%.4f  ce=%.4f  kl=%.4f | lam=%.4f | %.1fs",
+            epoch, epochs,
+            epoch_total / n_batches,
+            epoch_ce    / n_batches,
+            epoch_kl    / n_batches,
+            lam_epoch,
+            elapsed,
+        )
+
+        # Validation — use lam_epoch, not the stale per-step value
+        val_loss, val_ce = evaluate(
+            model, hmm, loaders["val"], lam_epoch, log,
+            split="val", has_spans=has_spans,
+        )
+
+        epoch_ckpt = run_dir / f"epoch_{epoch:03d}.pt"
+        torch.save(
+            {"epoch": epoch, "model": model.state_dict(),
+             "optimizer": optimizer.state_dict(), "val_loss": val_loss,
+             "val_ce": val_ce, "step": step},
+            epoch_ckpt,
+        )
+
+        if val_ce < best_val_loss:
+            best_val_loss = val_ce
+            torch.save(
+                {"epoch": epoch, "model": model.state_dict(),
+                 "optimizer": optimizer.state_dict(), "val_loss": val_loss,
+                 "val_ce": val_ce, "step": step},
+                best_ckpt,
+            )
+            log.info("  ↳ new best val CE %.4f — saved %s", val_ce, best_ckpt)
+
+    final_ckpt = run_dir / "final.pt"
+    torch.save({"epoch": epochs, "model": model.state_dict(), "step": step}, final_ckpt)
+    log.info("Final checkpoint saved -> %s", final_ckpt)
+    return model
+
+
+# ---------------------------------------------------------------------------
+# Evaluation
+# ---------------------------------------------------------------------------
+
+def evaluate(
+    model: LIT,
+    hmm: HMM,
+    loader: DataLoader,
+    lam: float,
+    log: logging.Logger,
+    split: str = "val",
+    has_spans: bool = False,
+) -> float:
+    model.eval()
+    total_loss = ce_loss = kl_loss = 0.0
+    n_batches  = 0
+
+    with torch.no_grad():
+        for batch in loader:
+            if len(batch) == 3:
+                inp, tgt, span_boundaries = batch
+            else:
+                inp, tgt = batch
+                span_boundaries = None
+
+            inp = inp.to(DEVICE)
+            tgt = tgt.to(DEVICE)
+
+            if has_spans and span_boundaries is not None:
+                hmm_proba   = hmm.predict_proba_spans(inp, span_boundaries)
+                span_logits = model.forward_spans(inp, span_boundaries)
+            else:
+                hmm_proba   = hmm.predict_proba(inp)
+                span_logits = None
+
+            logits = model(inp)
+            total, ce, kl = model.lit_loss(logits, tgt, hmm_proba, lam, span_logits)
+
+            total_loss += total.item()
+            ce_loss    += ce.item()
+            kl_loss    += kl.item()
+            n_batches  += 1
+
+    n = max(n_batches, 1)
+    log.info(
+        "         %s  — total=%.4f  ce=%.4f  kl=%.4f",
+        split, total_loss / n, ce_loss / n, kl_loss / n,
+    )
+    return total_loss / n, ce_loss / n
 
 
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
-def main():
+def main() -> None:
+    parser = argparse.ArgumentParser(description="LIT training pipeline")
+    parser.add_argument("--config",   default="configs/data_config.yaml")
+    parser.add_argument("--run_name", default="lit_run")
+    parser.add_argument("--skip_hmm", action="store_true",
+                        help="Load a saved HMM instead of retraining")
+    parser.add_argument("--resume", action="store_true",
+                        help="Resume transformer training from best.pt in the run directory")
+    args = parser.parse_args()
 
-    print("=" * 80)
-    print("Generating span boundary files for LIT")
-    print("=" * 80)
+    config_path  = Path(args.config)
+    if not config_path.is_absolute():
+        config_path = Path(__file__).parent / args.config
+    cfg          = load_config(str(config_path))
+    project_root = config_path.parent.parent
+    cfg          = resolve_paths(cfg, project_root)
+    p            = cfg["paths"]
 
-    # -----------------------------------------------------------------------
-    # Validate inputs
-    # -----------------------------------------------------------------------
+    run_dir = Path(p["logs_dir"]) / args.run_name
+    run_dir.mkdir(parents=True, exist_ok=True)
+    log = setup_logging(str(run_dir), args.run_name)
 
-    required_files = [
-        SEGMENTED_FILE,
-        SPLITS_DIR / "train.pkl",
-        SPLITS_DIR / "val.pkl",
-        SPLITS_DIR / "test.pkl",
-    ]
+    log.info("Device: %s", DEVICE)
+    log.info("Run directory: %s", run_dir)
 
-    missing = [p for p in required_files if not p.exists()]
+    # Vocabulary
+    vocab = Vocabulary.load(p["vocab_file"], cfg)
+    vocab_size = len(vocab)
+    log.info("Vocabulary size: %d", vocab_size)
 
-    if missing:
-        print("\nERROR: Missing required files:\n")
-        for p in missing:
-            print("  ", p)
-        return
+    # Splits + span boundaries
+    log.info("Loading splits from %s", p["splits_dir"])
+    splits, span_splits, *extra = load_splits(p["splits_dir"])
 
-    # -----------------------------------------------------------------------
-    # Load splits
-    # -----------------------------------------------------------------------
+    # Check whether span boundaries were actually saved (non-empty)
+    has_spans = any(
+        any(len(s) > 0 for s in seqs)
+        for seqs in span_splits.values()
+    )
+    log.info("Span boundaries available: %s", has_spans)
 
-    print("\nLoading split files...")
-
-    train_split = load_pickle(SPLITS_DIR / "train.pkl")
-    val_split   = load_pickle(SPLITS_DIR / "val.pkl")
-    test_split  = load_pickle(SPLITS_DIR / "test.pkl")
-
-    n_train = len(train_split)
-    n_val   = len(val_split)
-    n_test  = len(test_split)
-
-    total_split_sequences = n_train + n_val + n_test
-
-    print(f"  train: {n_train:,}")
-    print(f"  val:   {n_val:,}")
-    print(f"  test:  {n_test:,}")
-    print(f"  total: {total_split_sequences:,}")
-
-    # -----------------------------------------------------------------------
-    # Load segmented corpus
-    # -----------------------------------------------------------------------
-
-    print(f"\nLoading segmented corpus:")
-    print(f"  {SEGMENTED_FILE}")
-
-    segmented_lines = load_segmented_lines(SEGMENTED_FILE)
-
-    print(f"\nLoaded {len(segmented_lines):,} segmented sequences")
-
-    if len(segmented_lines) < total_split_sequences:
-        raise ValueError(
-            f"\nNot enough segmented lines.\n"
-            f"Need at least {total_split_sequences:,}\n"
-            f"Found only {len(segmented_lines):,}"
+    for name, seqs in splits.items():
+        log.info(
+            "  %s: %d sequences | %d tokens",
+            name, len(seqs), sum(len(s) for s in seqs),
         )
 
-    # -----------------------------------------------------------------------
-    # Generate spans
-    # -----------------------------------------------------------------------
+    # DataLoaders — pass span boundaries when available
+    loaders = build_dataloaders(
+        splits, cfg,
+        span_boundaries = span_splits if has_spans else None,
+    )
 
-    print("\nGenerating spans...")
+    # HMM
+    hmm_ckpt = str(Path(p.get("processed_dir", "data/processed")) / "hmm.pt")
+    if args.skip_hmm and Path(hmm_ckpt).exists():
+        log.info("Loading saved HMM from %s", hmm_ckpt)
+        hmm = HMM.load(hmm_ckpt, device=DEVICE)
+    else:
+        hmm = train_hmm(
+            sequences  = splits["train"],
+            vocab_size = vocab_size,
+            cfg        = cfg,
+            save_path  = hmm_ckpt,
+            log        = log,
+        )
 
-    all_spans = build_all_spans(segmented_lines)
+    # Transformer
+    log.info("Training LIT Transformer...")
+    resume_from = (run_dir / "best.pt") if args.resume else None
+    model = train_transformer(
+        hmm         = hmm,
+        loaders     = loaders,
+        vocab_size  = vocab_size,
+        cfg         = cfg,
+        run_dir     = run_dir,
+        log         = log,
+        has_spans   = has_spans,
+        resume_from = resume_from,
+    )
 
-    print(f"Generated {len(all_spans):,} span sequences")
+    # Final test evaluation at lam_end
+    log.info("Test evaluation...")
+    lam_end = float(cfg.get("lit", {}).get("lam_end", 0.0))
+    evaluate(
+        model, hmm, loaders["test"], lam=lam_end, log=log,
+        split="test", has_spans=has_spans,
+    )  # return value unused — just for logging
 
-    # -----------------------------------------------------------------------
-    # Align spans with splits
-    # -----------------------------------------------------------------------
-
-    print("\nAligning spans with train/val/test splits...")
-
-    train_spans = all_spans[:n_train]
-
-    val_start = n_train
-    val_end   = n_train + n_val
-
-    val_spans = all_spans[val_start:val_end]
-
-    test_start = val_end
-    test_end   = val_end + n_test
-
-    test_spans = all_spans[test_start:test_end]
-
-    # -----------------------------------------------------------------------
-    # Verification
-    # -----------------------------------------------------------------------
-
-    assert len(train_spans) == n_train
-    assert len(val_spans)   == n_val
-    assert len(test_spans)  == n_test
-
-    print("\nVerification passed.")
-
-    # -----------------------------------------------------------------------
-    # Save outputs
-    # -----------------------------------------------------------------------
-
-    train_out = SPLITS_DIR / "train.spans"
-    val_out   = SPLITS_DIR / "val.spans"
-    test_out  = SPLITS_DIR / "test.spans"
-
-    print("\nSaving span files...")
-
-    save_pickle(train_spans, train_out)
-    save_pickle(val_spans, val_out)
-    save_pickle(test_spans, test_out)
-
-    print(f"  saved: {train_out}")
-    print(f"  saved: {val_out}")
-    print(f"  saved: {test_out}")
-
-    # -----------------------------------------------------------------------
-    # Final summary
-    # -----------------------------------------------------------------------
-
-    print("\nDone.")
-
-    print("\nSpan counts:")
-    print(f"  train.spans : {len(train_spans):,}")
-    print(f"  val.spans   : {len(val_spans):,}")
-    print(f"  test.spans  : {len(test_spans):,}")
-
-    print("\nrun.py should now report:")
-    print("  Span boundaries available: True")
-    print("  span KL level: span-level")
+    log.info("Done. Artefacts in %s", run_dir)
 
 
 if __name__ == "__main__":
