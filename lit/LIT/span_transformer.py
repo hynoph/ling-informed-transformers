@@ -581,3 +581,85 @@ def lambda_schedule(
         return lam_end
     t = min(step / total_steps, 1.0)
     return lam_start + t * (lam_end - lam_start)
+
+class StandardTransformer(nn.Module):
+    """
+    Standard decoder-only Transformer baseline.
+    Identical architecture to LIT except:
+      - Uses regular MultiHeadAttention in ALL layers
+      - No SpanAttention
+      - No HMM KL divergence support
+    This makes it directly comparable to LIT.
+    """
+    def __init__(
+        self,
+        vocab_size: int,
+        d_model: int = 256,
+        n_heads: int = 4,
+        n_layers: int = 4,
+        d_ff: int = 1024,
+        max_len: int = 256,
+        dropout: float = 0.1,
+        pad_idx: int = 0,
+    ):
+        super().__init__()
+        self.d_model = d_model
+        self.pad_idx = pad_idx
+        self.max_len = max_len
+
+        self.embedding = nn.Embedding(vocab_size, d_model, padding_idx=pad_idx)
+        self.pos_encoding = PositionalEncoding(d_model, max_len, dropout)
+
+        # All layers use standard attention
+        self.layers = nn.ModuleList([
+            TransformerLayer(
+                d_model=d_model,
+                n_heads=n_heads,
+                d_ff=d_ff,
+                dropout=dropout,
+                use_span=False,          # Important: no span attention
+                max_span=max_len,        # ignored when use_span=False
+            )
+            for _ in range(n_layers)
+        ])
+
+        self.output_proj = nn.Linear(d_model, vocab_size)
+
+        self._init_weights()
+        self.to(DEVICE)
+
+    def _init_weights(self) -> None:
+        for p in self.parameters():
+            if p.dim() > 1:
+                nn.init.xavier_uniform_(p)
+
+    def _causal_mask(self, T: int) -> Tensor:
+        """(1, 1, T, T) lower-triangular boolean mask."""
+        return torch.tril(torch.ones(T, T, device=DEVICE, dtype=torch.bool)).view(1, 1, T, T)
+
+    def forward(self, x: Tensor) -> Tensor:
+        """
+        Args:
+            x: (batch, seq_len) token indices on DEVICE.
+        Returns:
+            logits: (batch, seq_len, vocab_size)
+        """
+        mask = self._causal_mask(x.size(1))
+        
+        out = self.pos_encoding(self.embedding(x) * math.sqrt(self.d_model))
+        
+        for layer in self.layers:
+            out = layer(out, mask)
+        
+        return self.output_proj(out)
+
+    def cross_entropy_loss(self, logits: Tensor, targets: Tensor) -> Tensor:
+        """
+        Next-token prediction cross-entropy, ignoring pad tokens.
+        Same as in LIT for fair comparison.
+        """
+        return F.cross_entropy(
+            logits.reshape(-1, logits.size(-1)),
+            targets.reshape(-1),
+            ignore_index=self.pad_idx,
+        )
