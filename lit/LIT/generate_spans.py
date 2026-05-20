@@ -1,111 +1,79 @@
 """
 generate_spans.py
 
-Generate morpheme/span boundary files for the LIT pipeline.
+Generate morpheme span boundary files for the LIT pipeline.
 
-Outputs:
-    data/splits/train.spans
-    data/splits/val.spans
-    data/splits/test.spans
+This script:
+  1. Loads dataset splits using the SAME loader as run.py
+  2. Loads segmented text
+  3. Creates span boundaries aligned to each split sequence
+  4. Saves:
+        train.spans
+        val.spans
+        test.spans
 
-These files are automatically discovered by run.py via:
+Output format:
+    List[List[Tuple[int, int]]]
 
-    load_splits(p["splits_dir"])
-
-Requirements:
-    data/processed/combined_segmented.txt
-    data/splits/train.pkl
-    data/splits/val.pkl
-    data/splits/test.pkl
-
-Assumptions:
-    - Each line in combined_segmented.txt corresponds to ONE sequence.
-    - Morphemes are whitespace-separated.
-    - Line ordering matches the ordering used when creating train/val/test splits.
+Compatible with:
+    run.py
+    load_splits()
+    build_dataloaders()
 """
 
+import argparse
 import pickle
 from pathlib import Path
 
-
-# ---------------------------------------------------------------------------
-# Paths
-# ---------------------------------------------------------------------------
-
-BASE_DIR      = Path("data")
-SPLITS_DIR    = BASE_DIR / "splits"
-PROCESSED_DIR = BASE_DIR / "processed"
-
-SEGMENTED_FILE = PROCESSED_DIR / "combined_segmented.txt"
+from src.data.split import load_splits
 
 
 # ---------------------------------------------------------------------------
-# Utilities
+# Helpers
 # ---------------------------------------------------------------------------
 
-def load_pickle(path):
-    with open(path, "rb") as f:
-        return pickle.load(f)
-
-
-def save_pickle(obj, path):
-    with open(path, "wb") as f:
-        pickle.dump(obj, f)
-
-
-def load_segmented_lines(path):
+def load_segmented_lines(path: Path) -> list[str]:
     """
-    Load segmented text lines.
+    Load segmented text file.
 
-    Example line:
-        un break able
+    Expected format:
+        morpheme1 morpheme2 morpheme3
 
-    Returns:
-        list[str]
+    One sequence per line.
     """
     with open(path, encoding="utf-8") as f:
         return [line.strip() for line in f if line.strip()]
 
 
-# ---------------------------------------------------------------------------
-# Span extraction
-# ---------------------------------------------------------------------------
-
-def extract_spans_from_line(line):
+def line_to_spans(line: str) -> list[tuple[int, int]]:
     """
-    Convert a segmented line into span boundaries.
+    Convert segmented line into span boundaries.
 
     Example:
         "un break able"
 
-    Returns:
+    Produces:
         [(0,1), (1,2), (2,3)]
 
-    Each whitespace-separated unit is treated as one morpheme span.
+    Assumes whitespace-separated morphemes.
     """
     morphemes = line.split()
 
     spans = []
-    token_idx = 0
+    idx = 0
 
     for morph in morphemes:
-        start = token_idx
+        start = idx
 
-        # One token per morph
-        token_idx += 1
+        # each morph counts as one token
+        morph_len = 1
 
-        end = token_idx
+        idx += morph_len
+        end = idx
 
         spans.append((start, end))
 
     return spans
-
-
-def build_all_spans(lines):
-    """
-    Generate span boundaries for all sequences.
-    """
-    return [extract_spans_from_line(line) for line in lines]
 
 
 # ---------------------------------------------------------------------------
@@ -114,138 +82,124 @@ def build_all_spans(lines):
 
 def main():
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--splits_dir",
+        default="data/splits",
+        help="Directory containing dataset splits",
+    )
+    parser.add_argument(
+        "--segmented_file",
+        default="data/processed/combined_segmented.txt",
+        help="Segmented morpheme file",
+    )
+
+    args = parser.parse_args()
+
+    splits_dir = Path(args.splits_dir)
+    segmented_file = Path(args.segmented_file)
+
     print("=" * 80)
     print("Generating span boundary files for LIT")
     print("=" * 80)
+    print()
 
     # -----------------------------------------------------------------------
-    # Validate inputs
+    # Verify segmented file
     # -----------------------------------------------------------------------
 
-    required_files = [
-        SEGMENTED_FILE,
-        SPLITS_DIR / "train.pkl",
-        SPLITS_DIR / "val.pkl",
-        SPLITS_DIR / "test.pkl",
-    ]
-
-    missing = [p for p in required_files if not p.exists()]
-
-    if missing:
-        print("\nERROR: Missing required files:\n")
-        for p in missing:
-            print("  ", p)
+    if not segmented_file.exists():
+        print(f"ERROR: Missing segmented file:\n\n   {segmented_file}")
         return
 
     # -----------------------------------------------------------------------
-    # Load splits
+    # Load splits EXACTLY like run.py
     # -----------------------------------------------------------------------
 
-    print("\nLoading split files...")
+    print(f"Loading splits from: {splits_dir}")
 
-    train_split = load_pickle(SPLITS_DIR / "train.pkl")
-    val_split   = load_pickle(SPLITS_DIR / "val.pkl")
-    test_split  = load_pickle(SPLITS_DIR / "test.pkl")
+    try:
+        splits, *_ = load_splits(str(splits_dir))
+    except Exception as e:
+        print("\nERROR loading splits:")
+        print(e)
+        return
 
-    n_train = len(train_split)
-    n_val   = len(val_split)
-    n_test  = len(test_split)
-
-    total_split_sequences = n_train + n_val + n_test
-
-    print(f"  train: {n_train:,}")
-    print(f"  val:   {n_val:,}")
-    print(f"  test:  {n_test:,}")
-    print(f"  total: {total_split_sequences:,}")
+    for split_name in ["train", "val", "test"]:
+        if split_name not in splits:
+            print(f"\nERROR: Missing split '{split_name}'")
+            return
 
     # -----------------------------------------------------------------------
-    # Load segmented corpus
+    # Load segmented text
     # -----------------------------------------------------------------------
 
-    print(f"\nLoading segmented corpus:")
-    print(f"  {SEGMENTED_FILE}")
+    print(f"\nLoading segmented text from:\n   {segmented_file}")
 
-    segmented_lines = load_segmented_lines(SEGMENTED_FILE)
+    segmented_lines = load_segmented_lines(segmented_file)
 
-    print(f"\nLoaded {len(segmented_lines):,} segmented sequences")
+    print(f"Loaded {len(segmented_lines):,} segmented sequences")
+
+    # -----------------------------------------------------------------------
+    # Verify counts
+    # -----------------------------------------------------------------------
+
+    total_split_sequences = (
+        len(splits["train"])
+        + len(splits["val"])
+        + len(splits["test"])
+    )
+
+    print(f"\nTotal split sequences: {total_split_sequences:,}")
 
     if len(segmented_lines) < total_split_sequences:
-        raise ValueError(
-            f"\nNot enough segmented lines.\n"
-            f"Need at least {total_split_sequences:,}\n"
-            f"Found only {len(segmented_lines):,}"
+        print("\nERROR:")
+        print("Segmented file has fewer sequences than dataset splits.")
+        print(
+            f"Segmented: {len(segmented_lines):,} "
+            f"| Splits: {total_split_sequences:,}"
         )
+        return
 
     # -----------------------------------------------------------------------
     # Generate spans
     # -----------------------------------------------------------------------
 
-    print("\nGenerating spans...")
+    print("\nGenerating span boundaries...")
 
-    all_spans = build_all_spans(segmented_lines)
-
-    print(f"Generated {len(all_spans):,} span sequences")
+    all_spans = [line_to_spans(line) for line in segmented_lines]
 
     # -----------------------------------------------------------------------
-    # Align spans with splits
+    # Align spans EXACTLY to split sizes
     # -----------------------------------------------------------------------
 
-    print("\nAligning spans with train/val/test splits...")
+    offset = 0
 
-    train_spans = all_spans[:n_train]
+    for split_name in ["train", "val", "test"]:
 
-    val_start = n_train
-    val_end   = n_train + n_val
+        split_size = len(splits[split_name])
 
-    val_spans = all_spans[val_start:val_end]
+        split_spans = all_spans[offset: offset + split_size]
 
-    test_start = val_end
-    test_end   = val_end + n_test
+        offset += split_size
 
-    test_spans = all_spans[test_start:test_end]
+        # -------------------------------------------------------------------
+        # Save
+        # -------------------------------------------------------------------
 
-    # -----------------------------------------------------------------------
-    # Verification
-    # -----------------------------------------------------------------------
+        out_file = splits_dir / f"{split_name}.spans"
 
-    assert len(train_spans) == n_train
-    assert len(val_spans)   == n_val
-    assert len(test_spans)  == n_test
+        with open(out_file, "wb") as f:
+            pickle.dump(split_spans, f)
 
-    print("\nVerification passed.")
-
-    # -----------------------------------------------------------------------
-    # Save outputs
-    # -----------------------------------------------------------------------
-
-    train_out = SPLITS_DIR / "train.spans"
-    val_out   = SPLITS_DIR / "val.spans"
-    test_out  = SPLITS_DIR / "test.spans"
-
-    print("\nSaving span files...")
-
-    save_pickle(train_spans, train_out)
-    save_pickle(val_spans, val_out)
-    save_pickle(test_spans, test_out)
-
-    print(f"  saved: {train_out}")
-    print(f"  saved: {val_out}")
-    print(f"  saved: {test_out}")
-
-    # -----------------------------------------------------------------------
-    # Final summary
-    # -----------------------------------------------------------------------
+        print(
+            f"Saved {out_file} "
+            f"({len(split_spans):,} sequences)"
+        )
 
     print("\nDone.")
-
-    print("\nSpan counts:")
-    print(f"  train.spans : {len(train_spans):,}")
-    print(f"  val.spans   : {len(val_spans):,}")
-    print(f"  test.spans  : {len(test_spans):,}")
-
-    print("\nrun.py should now report:")
-    print("  Span boundaries available: True")
-    print("  span KL level: span-level")
+    print("\nrun.py should now detect:")
+    print("   Span boundaries available: True")
 
 
 if __name__ == "__main__":
